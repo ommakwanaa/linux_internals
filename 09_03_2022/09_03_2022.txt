@@ -1,0 +1,1978 @@
+Script started on 2022-03-09 08:08:09+0530
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc dup1.c 
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc dup1.c [2Petc 1.pdfgcc dup1.c [K[K[K[K[K[K[K[K[K[K[K./a.out
+fd1 is = 3
+fd1 is = 4
+fd3 is = 5
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outgcc dup1.c 
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc dup1.c [4P./a.outgcc dup1.c [4P./a.outgcc dup1.c [1P[1@2
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc dup2.c 1[C[C[C[4P./a.outgcc dup1.c [4P./a.out
+fd1 is = 3
+fd2 is = 4
+fd3 is = 7
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outgcc dup2.c \\\\[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kgcc fcntl.c 
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc fcntl.c [5P./a.outgcc dup2.c [4P./a.out
+fd1 is = 3
+fd3 is = 4
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outgcc fcntl.c 
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc fcntl.c [5P./a.out
+fd1 is = 3
+fd3 is = 7
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ps -ax
+  PID TTY      STAT   TIME COMMAND
+    1 ?        Ss     0:03 /sbin/init splash
+    2 ?        S      0:00 [kthreadd]
+    3 ?        I<     0:00 [rcu_gp]
+    4 ?        I<     0:00 [rcu_par_gp]
+    6 ?        I<     0:00 [kworker/0:0H-kb]
+    9 ?        I<     0:00 [mm_percpu_wq]
+   10 ?        S      0:00 [ksoftirqd/0]
+   11 ?        I      0:03 [rcu_sched]
+   12 ?        S      0:00 [migration/0]
+   13 ?        S      0:00 [idle_inject/0]
+   14 ?        S      0:00 [cpuhp/0]
+   15 ?        S      0:00 [kdevtmpfs]
+   16 ?        I<     0:00 [netns]
+   17 ?        S      0:00 [rcu_tasks_kthre]
+   18 ?        S      0:00 [kauditd]
+   19 ?        S      0:00 [khungtaskd]
+   20 ?        S      0:00 [oom_reaper]
+   21 ?        I<     0:00 [writeback]
+   22 ?        S      0:00 [kcompactd0]
+   23 ?        SN     0:00 [ksmd]
+   24 ?        SN     0:00 [khugepaged]
+   70 ?        I<     0:00 [kintegrityd]
+   71 ?        I<     0:00 [kblockd]
+   72 ?        I<     0:00 [blkcg_punt_bio]
+   73 ?        I<     0:00 [tpm_dev_wq]
+   74 ?        I<     0:00 [ata_sff]
+   75 ?        I<     0:00 [md]
+   76 ?        I<     0:00 [edac-poller]
+   77 ?        I<     0:00 [devfreq_wq]
+   78 ?        S      0:00 [watchdogd]
+   83 ?        S      0:00 [kswapd0]
+   84 ?        S      0:00 [ecryptfs-kthrea]
+   86 ?        I<     0:00 [kthrotld]
+   87 ?        I<     0:00 [acpi_thermal_pm]
+   88 ?        S      0:00 [scsi_eh_0]
+   89 ?        I<     0:00 [scsi_tmf_0]
+   90 ?        S      0:00 [scsi_eh_1]
+   91 ?        I<     0:00 [scsi_tmf_1]
+   93 ?        I<     0:00 [vfio-irqfd-clea]
+   95 ?        I<     0:00 [ipv6_addrconf]
+  104 ?        I<     0:00 [kstrp]
+  107 ?        I<     0:00 [kworker/u3:0]
+  120 ?        I<     0:00 [charger_manager]
+  121 ?        I<     0:01 [kworker/0:1H-kb]
+  158 ?        S      0:00 [scsi_eh_2]
+  159 ?        I<     0:00 [scsi_tmf_2]
+  182 ?        S      0:00 [jbd2/sda1-8]
+  183 ?        I<     0:00 [ext4-rsv-conver]
+  220 ?        S<s    0:01 /lib/systemd/systemd-journald
+  238 ?        Ss     0:00 /lib/systemd/systemd-udevd
+  259 ?        S<     0:00 [loop0]
+  264 ?        S<     0:00 [loop1]
+  267 ?        S<     0:00 [loop2]
+  272 ?        S<     0:00 [loop3]
+  277 ?        S<     0:00 [loop4]
+  280 ?        S<     0:00 [loop5]
+  282 ?        S<     0:00 [loop6]
+  286 ?        S<     0:00 [loop7]
+  290 ?        S<     0:00 [loop8]
+  291 ?        S<     0:00 [loop9]
+  294 ?        S<     0:00 [loop10]
+  301 ?        S<     0:00 [loop11]
+  304 ?        S<     0:00 [loop12]
+  307 ?        S<     0:00 [loop13]
+  318 ?        S<     0:00 [loop14]
+  327 ?        S<     0:00 [loop15]
+  335 ?        S<     0:00 [loop16]
+  344 ?        S<     0:00 [loop17]
+  362 ?        Ss     0:00 /lib/systemd/systemd-resolved
+  459 ?        I<     0:00 [iprt-VBoxWQueue]
+  467 ?        Ss     0:00 /usr/sbin/cupsd -l
+  468 ?        Ssl    0:00 /usr/sbin/ModemManager --filter-policy=strict
+  473 ?        Ssl    0:00 /usr/sbin/rsyslogd -n
+  480 ?        Ss     0:00 /usr/sbin/acpid
+  484 ?        Ssl    0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+  485 ?        Ss     0:02 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+  497 ?        Ssl    0:01 /usr/sbin/NetworkManager --no-daemon
+  500 ?        S      0:00 /usr/lib/cups/notifier/dbus dbus://
+  510 ?        Ss     0:00 /usr/sbin/cron -f
+  511 ?        Ss     0:00 avahi-daemon: running [om-VirtualBox.local]
+  514 ?        Ss     0:00 /sbin/wpa_supplicant -u -s -O /run/wpa_supplicant
+  517 ?        Ssl    0:00 /usr/lib/accountsservice/accounts-daemon
+  518 ?        S      0:00 avahi-daemon: chroot helper
+  521 ?        Ss     0:00 /lib/systemd/systemd-logind
+  522 ?        Ssl    0:00 /usr/lib/udisks2/udisksd
+  528 ?        Ssl    0:01 /usr/lib/snapd/snapd
+  550 ?        Ssl    0:00 /usr/sbin/cups-browsed
+  552 ?        Ssl    0:00 /usr/lib/policykit-1/polkitd --no-debug
+  564 ?        Ssl    0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+  609 ?        Ss     0:00 /usr/sbin/apache2 -k start
+  611 ?        Sl     0:00 /usr/sbin/apache2 -k start
+  612 ?        Sl     0:00 /usr/sbin/apache2 -k start
+  692 ?        Ssl    0:00 /usr/bin/whoopsie -f
+  694 ?        Ss     0:00 /usr/sbin/kerneloops --test
+  706 ?        Ss     0:00 /usr/sbin/kerneloops
+  734 ?        I<     0:00 [cryptd]
+  737 ?        S      0:00 [irq/18-vmwgfx]
+  738 ?        I<     0:00 [ttm_swap]
+ 1053 ?        Ssl    0:00 /usr/sbin/gdm3
+ 1063 ?        Sl     0:01 /usr/sbin/VBoxService --pidfile /var/run/vboxadd-service.sh
+ 1072 ?        Sl     0:00 gdm-session-worker [pam/gdm-launch-environment]
+ 1081 ?        Ss     0:00 /lib/systemd/systemd --user
+ 1082 ?        S      0:00 (sd-pam)
+ 1093 tty1     Ssl+   0:00 /usr/lib/gdm3/gdm-wayland-session gnome-session --autostart /usr/share/gdm/greeter/autostart
+ 1095 ?        Ss     0:00 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+ 1097 tty1     Sl+    0:00 /usr/lib/gnome-session/gnome-session-binary --autostart /usr/share/gdm/greeter/autostart
+ 1103 tty1     Sl+    0:15 /usr/bin/gnome-shell
+ 1110 ?        Ssl    0:00 /usr/lib/upower/upowerd
+ 1118 tty1     S+     0:00 /usr/bin/Xwayland :1024 -rootless -terminate -accessx -core -listen 4 -listen 5 -displayfd 6
+ 1121 ?        Ssl    0:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+ 1126 ?        S      0:00 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 3
+ 1128 ?        Sl     0:00 /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+ 1131 ?        Ssl    0:00 /usr/bin/pulseaudio --daemonize=no
+ 1133 ?        SNsl   0:00 /usr/lib/rtkit/rtkit-daemon
+ 1145 tty1     Sl     0:00 ibus-daemon --xim --panel disable
+ 1148 tty1     Sl     0:00 /usr/lib/ibus/ibus-dconf
+ 1151 tty1     Sl     0:00 /usr/lib/ibus/ibus-x11 --kill-daemon
+ 1155 ?        Sl     0:00 /usr/lib/ibus/ibus-portal
+ 1162 ?        Ssl    0:00 /usr/libexec/xdg-permission-store
+ 1169 ?        Ssl    0:00 /usr/lib/x86_64-linux-gnu/boltd
+ 1177 ?        Ssl    0:10 /usr/lib/packagekit/packagekitd
+ 1180 tty1     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-xsettings
+ 1184 tty1     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-a11y-settings
+ 1186 tty1     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-clipboard
+ 1189 tty1     Sl+    0:01 /usr/lib/gnome-settings-daemon/gsd-color
+ 1190 tty1     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-datetime
+ 1191 tty1     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-housekeeping
+ 1192 tty1     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-keyboard
+ 1193 tty1     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-media-keys
+ 1196 tty1     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-mouse
+ 1199 tty1     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-power
+ 1202 tty1     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-print-notifications
+ 1207 tty1     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-rfkill
+ 1208 tty1     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-screensaver-proxy
+ 1211 tty1     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-sharing
+ 1214 tty1     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-smartcard
+ 1220 tty1     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-sound
+ 1228 tty1     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-wacom
+ 1244 ?        Ssl    0:00 /usr/lib/colord/colord
+ 1271 tty1     Sl     0:00 /usr/lib/ibus/ibus-engine-simple
+ 1539 ?        Sl     0:00 gdm-session-worker [pam/gdm-password]
+ 1543 ?        Ss     0:00 /lib/systemd/systemd --user
+ 1544 ?        S      0:00 (sd-pam)
+ 1557 ?        Sl     0:00 /usr/bin/gnome-keyring-daemon --daemonize --login
+ 1561 tty2     Ssl+   0:00 /usr/lib/gdm3/gdm-x-session --run-script env GNOME_SHELL_SESSION_MODE=ubuntu gnome-session --session=ubuntu
+ 1563 tty2     Sl+    1:06 /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xauthority -background none -noreset -keeptty -verb
+ 1566 ?        Ss     0:01 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+ 1570 tty2     Sl+    0:00 /usr/lib/gnome-session/gnome-session-binary --session=ubuntu
+ 1669 ?        S      0:00 /usr/bin/VBoxClient --clipboard
+ 1670 ?        Sl     0:00 /usr/bin/VBoxClient --clipboard
+ 1680 ?        S      0:00 /usr/bin/VBoxClient --seamless
+ 1681 ?        Sl     0:00 /usr/bin/VBoxClient --seamless
+ 1687 ?        S      0:00 /usr/bin/VBoxClient --draganddrop
+ 1688 ?        Sl     0:20 /usr/bin/VBoxClient --draganddrop
+ 1695 ?        S      0:00 /usr/bin/VBoxClient --vmsvga
+ 1696 ?        Sl     0:00 /usr/bin/VBoxClient --vmsvga
+ 1705 ?        Ss     0:00 /usr/bin/ssh-agent /usr/bin/im-launch env GNOME_SHELL_SESSION_MODE=ubuntu gnome-session --session=ubuntu
+ 1707 ?        Ssl    0:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+ 1712 ?        S      0:00 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 3
+ 1715 ?        Sl     0:00 /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+ 1733 tty2     Sl+    4:13 /usr/bin/gnome-shell
+ 1739 ?        Ssl    0:00 /usr/lib/gvfs/gvfsd
+ 1744 ?        Sl     0:00 /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
+ 1755 ?        Sl     0:00 /usr/bin/pulseaudio --start --log-target=syslog
+ 1766 tty2     Sl     0:07 ibus-daemon --xim --panel disable
+ 1770 tty2     Sl     0:00 /usr/lib/ibus/ibus-dconf
+ 1772 tty2     Sl     0:00 /usr/lib/ibus/ibus-x11 --kill-daemon
+ 1775 ?        Sl     0:00 /usr/lib/ibus/ibus-portal
+ 1784 ?        Ssl    0:00 /usr/libexec/xdg-permission-store
+ 1789 ?        Sl     0:00 /usr/lib/gnome-shell/gnome-shell-calendar-server
+ 1793 ?        Ssl    0:00 /usr/lib/evolution/evolution-source-registry
+ 1800 ?        Sl     0:00 /usr/lib/gnome-online-accounts/goa-daemon
+ 1812 ?        Sl     0:00 /usr/lib/gnome-online-accounts/goa-identity-service
+ 1824 ?        Sl     0:00 /usr/lib/dconf/dconf-service
+ 1827 ?        Ssl    0:00 /usr/lib/gvfs/gvfs-udisks2-volume-monitor
+ 1831 ?        Ssl    0:00 /usr/lib/gvfs/gvfs-goa-volume-monitor
+ 1835 ?        Ssl    0:00 /usr/lib/gvfs/gvfs-gphoto2-volume-monitor
+ 1839 ?        Ssl    0:00 /usr/lib/gvfs/gvfs-mtp-volume-monitor
+ 1843 ?        Ssl    0:00 /usr/lib/gvfs/gvfs-afc-volume-monitor
+ 1848 tty2     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-power
+ 1849 tty2     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-print-notifications
+ 1851 tty2     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-rfkill
+ 1852 tty2     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-screensaver-proxy
+ 1853 tty2     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-sharing
+ 1857 tty2     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-xsettings
+ 1863 tty2     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-sound
+ 1866 tty2     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-smartcard
+ 1869 tty2     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-wacom
+ 1879 tty2     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-a11y-settings
+ 1883 tty2     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-clipboard
+ 1885 tty2     Sl+    0:01 /usr/lib/gnome-settings-daemon/gsd-color
+ 1886 tty2     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-datetime
+ 1893 tty2     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-housekeeping
+ 1894 tty2     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-keyboard
+ 1897 tty2     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-media-keys
+ 1899 tty2     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-mouse
+ 1938 tty2     Sl+    0:00 /usr/lib/gnome-settings-daemon/gsd-printer
+ 1954 tty2     Sl+    0:00 /usr/lib/gnome-disk-utility/gsd-disk-utility-notify
+ 1957 tty2     Sl+    0:03 nautilus-desktop
+ 1992 ?        Sl     0:00 /usr/lib/gvfs/gvfsd-trash --spawner :1.13 /org/gtk/gvfs/exec_spaw/0
+ 2013 ?        Ssl    0:00 /usr/lib/evolution/evolution-calendar-factory
+ 2020 ?        Sl     0:00 /usr/lib/evolution/evolution-calendar-factory-subprocess --factory all --bus-name org.gnome.evolution.dataserver
+ 2031 ?        Ssl    0:00 /usr/lib/evolution/evolution-addressbook-factory
+ 2040 ?        Sl     0:00 /usr/lib/evolution/evolution-addressbook-factory-subprocess --factory all --bus-name org.gnome.evolution.dataser
+ 2059 tty2     Sl     0:01 /usr/lib/ibus/ibus-engine-simple
+ 2078 ?        Ssl    0:00 /usr/lib/gvfs/gvfsd-metadata
+ 2296 tty2     Sl+    0:00 update-notifier
+ 2298 tty2     SLl+   0:03 /usr/bin/gnome-software --gapplication-service
+ 2369 ?        Ssl    0:00 /usr/lib/fwupd/fwupd
+ 2426 tty2     SNl+   0:08 /usr/bin/python3 /usr/bin/update-manager --no-update --no-focus-on-map
+ 2581 tty2     Sl+    0:00 /usr/lib/deja-dup/deja-dup-monitor
+ 4867 ?        Ssl    0:00 /usr/bin/zeitgeist-daemon
+ 4873 ?        Ssl    0:00 /usr/lib/zeitgeist/zeitgeist/zeitgeist-fts
+ 5624 ?        SLsl   0:15 /usr/share/code/code .
+ 5627 ?        S      0:00 /usr/share/code/code --type=zygote --no-zygote-sandbox
+ 5628 ?        S      0:00 /usr/share/code/code --type=zygote
+ 5630 ?        S      0:00 /usr/share/code/code --type=zygote
+ 5671 ?        Sl     0:00 /usr/share/code/code --type=utility --utility-sub-type=network.mojom.NetworkService --field-trial-handle=6038635
+ 5672 ?        Sl     0:35 /usr/share/code/code --type=gpu-process --field-trial-handle=6038635623307849685,7918134835813376873,131072 --di
+ 5678 ?        S      0:00 /usr/share/code/code --type=broker
+ 5690 ?        Rl     1:42 /usr/share/code/code --type=renderer --disable-color-correct-rendering --field-trial-handle=6038635623307849685,
+ 5706 ?        Sl     0:06 /usr/share/code/code --type=renderer --disable-color-correct-rendering --field-trial-handle=6038635623307849685,
+ 5722 ?        Sl     0:14 /usr/share/code/code --ms-enable-electron-run-as-node --inspect-port=0 /usr/share/code/resources/app/out/bootstr
+ 5734 ?        Rl     0:07 /usr/share/code/code --ms-enable-electron-run-as-node /usr/share/code/resources/app/out/bootstrap-fork --type=pt
+ 5756 ?        Sl     0:03 /usr/share/code/code --ms-enable-electron-run-as-node /usr/share/code/resources/app/out/bootstrap-fork --type=fi
+ 5838 pts/2    Ss     0:00 /bin/bash
+ 6397 ?        I      0:00 [kworker/0:1-cgr]
+ 6839 ?        Sl     0:06 /home/om/.vscode/extensions/ms-vscode.cpptools-1.9.2/bin/cpptools
+ 7093 tty2     SLl+   0:28 /opt/google/chrome/chrome --enable-crashpad
+ 7098 tty2     S+     0:00 cat
+ 7099 tty2     S+     0:00 cat
+ 7101 ?        Sl     0:00 /opt/google/chrome/chrome_crashpad_handler --monitor-self --monitor-self-annotation=ptype=crashpad-handler --dat
+ 7103 ?        Sl     0:00 /opt/google/chrome/chrome_crashpad_handler --no-periodic-tasks --monitor-self-annotation=ptype=crashpad-handler 
+ 7109 tty2     S+     0:00 /opt/google/chrome/chrome --type=zygote --no-zygote-sandbox --enable-crashpad --crashpad-handler-pid=7101 --enab
+ 7110 tty2     S+     0:00 /opt/google/chrome/chrome --type=zygote --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=17
+ 7111 tty2     S+     0:00 /opt/google/chrome/nacl_helper
+ 7114 tty2     S+     0:00 /opt/google/chrome/chrome --type=zygote --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=17
+ 7132 ?        Ssl    0:00 /usr/libexec/xdg-desktop-portal
+ 7136 ?        Ssl    0:00 /usr/libexec/xdg-document-portal
+ 7148 ?        Ssl    0:00 /usr/libexec/xdg-desktop-portal-gtk
+ 7152 tty2     SLl+   0:09 /opt/google/chrome/chrome --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-GB --service-
+ 7156 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=utility --utility-sub-type=storage.mojom.StorageService --lang=en-GB --service-
+ 7277 tty2     Sl+    0:54 /opt/google/chrome/chrome --type=gpu-process --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-report
+ 7424 tty2     Sl+    0:04 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7448 tty2     Sl+    0:03 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7459 tty2     Sl+    0:02 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7469 tty2     Sl+    0:09 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7480 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7487 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7502 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7525 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7537 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7548 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7559 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7569 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7580 tty2     Sl+    9:21 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7592 tty2     Sl+    0:01 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7856 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7907 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7912 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7922 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7926 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7961 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7968 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 7994 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 8005 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 8023 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 8034 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 8045 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 8051 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 8070 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 8081 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 8082 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 8114 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 8125 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 8324 tty2     Sl+    0:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --crashpad-handler-pid=7101 --enable-crash-reporter=
+ 8367 ?        Sl     0:01 /usr/bin/nautilus --gapplication-service
+ 8778 pts/2    S+     0:00 script 09_03_2022.txt
+ 8779 pts/0    Ss     0:00 bash -i
+ 9338 ?        I      0:00 [kworker/0:0-eve]
+ 9784 ?        I      0:00 [kworker/u2:1-ev]
+10047 ?        Sl     0:00 /home/om/.vscode/extensions/ms-vscode.cpptools-1.9.2/bin/cpptools-srv 6839 {33B3D22F-0042-401D-8B9C-00A1D46C9D5E
+10059 ?        I      0:00 [kworker/u2:2-ev]
+10310 ?        S      0:00 /sbin/dhclient -d -q -sf /usr/lib/NetworkManager/nm-dhcp-helper -pf /run/dhclient-enp0s3.pid -lf /var/lib/Networ
+10359 pts/0    R+     0:00 ps -ax
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ps -a
+  PID TTY          TIME CMD
+ 1097 tty1     00:00:00 gnome-session-b
+ 1103 tty1     00:00:15 gnome-shell
+ 1118 tty1     00:00:00 Xwayland
+ 1145 tty1     00:00:00 ibus-daemon
+ 1148 tty1     00:00:00 ibus-dconf
+ 1151 tty1     00:00:00 ibus-x11
+ 1180 tty1     00:00:00 gsd-xsettings
+ 1184 tty1     00:00:00 gsd-a11y-settin
+ 1186 tty1     00:00:00 gsd-clipboard
+ 1189 tty1     00:00:01 gsd-color
+ 1190 tty1     00:00:00 gsd-datetime
+ 1191 tty1     00:00:00 gsd-housekeepin
+ 1192 tty1     00:00:00 gsd-keyboard
+ 1193 tty1     00:00:00 gsd-media-keys
+ 1196 tty1     00:00:00 gsd-mouse
+ 1199 tty1     00:00:00 gsd-power
+ 1202 tty1     00:00:00 gsd-print-notif
+ 1207 tty1     00:00:00 gsd-rfkill
+ 1208 tty1     00:00:00 gsd-screensaver
+ 1211 tty1     00:00:00 gsd-sharing
+ 1214 tty1     00:00:00 gsd-smartcard
+ 1220 tty1     00:00:00 gsd-sound
+ 1228 tty1     00:00:00 gsd-wacom
+ 1271 tty1     00:00:00 ibus-engine-sim
+ 1563 tty2     00:01:06 Xorg
+ 1570 tty2     00:00:00 gnome-session-b
+ 1733 tty2     00:04:14 gnome-shell
+ 1766 tty2     00:00:07 ibus-daemon
+ 1770 tty2     00:00:00 ibus-dconf
+ 1772 tty2     00:00:00 ibus-x11
+ 1848 tty2     00:00:00 gsd-power
+ 1849 tty2     00:00:00 gsd-print-notif
+ 1851 tty2     00:00:00 gsd-rfkill
+ 1852 tty2     00:00:00 gsd-screensaver
+ 1853 tty2     00:00:00 gsd-sharing
+ 1857 tty2     00:00:00 gsd-xsettings
+ 1863 tty2     00:00:00 gsd-sound
+ 1866 tty2     00:00:00 gsd-smartcard
+ 1869 tty2     00:00:00 gsd-wacom
+ 1879 tty2     00:00:00 gsd-a11y-settin
+ 1883 tty2     00:00:00 gsd-clipboard
+ 1885 tty2     00:00:01 gsd-color
+ 1886 tty2     00:00:00 gsd-datetime
+ 1893 tty2     00:00:00 gsd-housekeepin
+ 1894 tty2     00:00:00 gsd-keyboard
+ 1897 tty2     00:00:00 gsd-media-keys
+ 1899 tty2     00:00:00 gsd-mouse
+ 1938 tty2     00:00:00 gsd-printer
+ 1954 tty2     00:00:00 gsd-disk-utilit
+ 1957 tty2     00:00:03 nautilus-deskto
+ 2059 tty2     00:00:01 ibus-engine-sim
+ 2296 tty2     00:00:00 update-notifier
+ 2298 tty2     00:00:03 gnome-software
+ 2426 tty2     00:00:08 update-manager
+ 2581 tty2     00:00:00 deja-dup-monito
+ 7093 tty2     00:00:28 chrome
+ 7098 tty2     00:00:00 cat
+ 7099 tty2     00:00:00 cat
+ 7109 tty2     00:00:00 chrome
+ 7110 tty2     00:00:00 chrome
+ 7111 tty2     00:00:00 nacl_helper
+ 7114 tty2     00:00:00 chrome
+ 7152 tty2     00:00:09 chrome
+ 7156 tty2     00:00:00 chrome
+ 7277 tty2     00:00:54 chrome
+ 7424 tty2     00:00:04 chrome
+ 7448 tty2     00:00:03 chrome
+ 7459 tty2     00:00:02 chrome
+ 7469 tty2     00:00:09 chrome
+ 7480 tty2     00:00:00 chrome
+ 7487 tty2     00:00:00 chrome
+ 7502 tty2     00:00:00 chrome
+ 7525 tty2     00:00:00 chrome
+ 7537 tty2     00:00:00 chrome
+ 7548 tty2     00:00:00 chrome
+ 7559 tty2     00:00:00 chrome
+ 7569 tty2     00:00:00 chrome
+ 7580 tty2     00:09:22 chrome
+ 7592 tty2     00:00:01 chrome
+ 7856 tty2     00:00:00 chrome
+ 7907 tty2     00:00:00 chrome
+ 7912 tty2     00:00:00 chrome
+ 7922 tty2     00:00:00 chrome
+ 7926 tty2     00:00:00 chrome
+ 7961 tty2     00:00:00 chrome
+ 7968 tty2     00:00:00 chrome
+ 7994 tty2     00:00:00 chrome
+ 8005 tty2     00:00:00 chrome
+ 8023 tty2     00:00:00 chrome
+ 8034 tty2     00:00:00 chrome
+ 8045 tty2     00:00:00 chrome
+ 8051 tty2     00:00:00 chrome
+ 8070 tty2     00:00:00 chrome
+ 8081 tty2     00:00:00 chrome
+ 8082 tty2     00:00:00 chrome
+ 8114 tty2     00:00:00 chrome
+ 8125 tty2     00:00:00 chrome
+ 8324 tty2     00:00:00 chrome
+ 8778 pts/2    00:00:00 script
+10411 pts/0    00:00:00 ps
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc getpid.c 
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc getpid.c [8Pps -ax./a.outgcc fcntl.c [5P./a.outgcc fcntl.c [5P./a.out
+my process pid is 10927
+my process ppid is 8779
+^C
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ps tree
+error: TTY could not be found
+
+Usage:
+ ps [options]
+
+ Try 'ps --help <simple|list|output|threads|misc|all>'
+  or 'ps --help <s|l|o|t|m|a>'
+ for additional help text.
+
+For more details see ps(1).
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ pstree
+systemd─┬─ModemManager───2*[{ModemManager}]
+        ├─NetworkManager─┬─dhclient
+        │                └─2*[{NetworkManager}]
+        ├─3*[VBoxClient───VBoxClient───2*[{VBoxClient}]]
+        ├─VBoxClient───VBoxClient───3*[{VBoxClient}]
+        ├─VBoxService───8*[{VBoxService}]
+        ├─accounts-daemon───2*[{accounts-daemon}]
+        ├─acpid
+        ├─apache2───2*[apache2───26*[{apache2}]]
+        ├─avahi-daemon───avahi-daemon
+        ├─boltd───2*[{boltd}]
+        ├─chrome─┬─2*[cat]
+        │        ├─chrome───chrome───7*[{chrome}]
+        │        ├─chrome─┬─chrome─┬─chrome───5*[{chrome}]
+        │        │        │        ├─30*[chrome───9*[{chrome}]]
+        │        │        │        ├─chrome───10*[{chrome}]
+        │        │        │        ├─chrome───13*[{chrome}]
+        │        │        │        └─chrome───14*[{chrome}]
+        │        │        └─nacl_helper
+        │        ├─chrome───8*[{chrome}]
+        │        └─21*[{chrome}]
+        ├─chrome_crashpad───2*[{chrome_crashpad}]
+        ├─chrome_crashpad───{chrome_crashpad}
+        ├─colord───2*[{colord}]
+        ├─cron
+        ├─cups-browsed───2*[{cups-browsed}]
+        ├─cupsd───dbus
+        ├─dbus-daemon
+        ├─fwupd───4*[{fwupd}]
+        ├─gdm3─┬─gdm-session-wor─┬─gdm-wayland-ses─┬─gnome-session-b─┬─gnome-shell─┬─Xwayland
+        │      │                 │                 │                 │             ├─ibus-daemon─┬─ibus-dconf───3*[{ibus-dconf}]
+        │      │                 │                 │                 │             │             ├─ibus-engine-sim───2*[{ibus-engine-sim}]
+        │      │                 │                 │                 │             │             └─2*[{ibus-daemon}]
+        │      │                 │                 │                 │             └─9*[{gnome-shell}]
+        │      │                 │                 │                 ├─gsd-a11y-settin───3*[{gsd-a11y-settin}]
+        │      │                 │                 │                 ├─gsd-clipboard───2*[{gsd-clipboard}]
+        │      │                 │                 │                 ├─gsd-color───3*[{gsd-color}]
+        │      │                 │                 │                 ├─gsd-datetime───2*[{gsd-datetime}]
+        │      │                 │                 │                 ├─gsd-housekeepin───2*[{gsd-housekeepin}]
+        │      │                 │                 │                 ├─gsd-keyboard───3*[{gsd-keyboard}]
+        │      │                 │                 │                 ├─gsd-media-keys───3*[{gsd-media-keys}]
+        │      │                 │                 │                 ├─gsd-mouse───2*[{gsd-mouse}]
+        │      │                 │                 │                 ├─gsd-power───3*[{gsd-power}]
+        │      │                 │                 │                 ├─gsd-print-notif───2*[{gsd-print-notif}]
+        │      │                 │                 │                 ├─gsd-rfkill───2*[{gsd-rfkill}]
+        │      │                 │                 │                 ├─gsd-screensaver───2*[{gsd-screensaver}]
+        │      │                 │                 │                 ├─gsd-sharing───3*[{gsd-sharing}]
+        │      │                 │                 │                 ├─gsd-smartcard───4*[{gsd-smartcard}]
+        │      │                 │                 │                 ├─gsd-sound───3*[{gsd-sound}]
+        │      │                 │                 │                 ├─gsd-wacom───2*[{gsd-wacom}]
+        │      │                 │                 │                 ├─gsd-xsettings───3*[{gsd-xsettings}]
+        │      │                 │                 │                 └─3*[{gnome-session-b}]
+        │      │                 │                 └─2*[{gdm-wayland-ses}]
+        │      │                 └─2*[{gdm-session-wor}]
+        │      ├─gdm-session-wor─┬─gdm-x-session─┬─Xorg───{Xorg}
+        │      │                 │               ├─gnome-session-b─┬─deja-dup-monito───3*[{deja-dup-monito}]
+        │      │                 │               │                 ├─gnome-shell─┬─ibus-daemon─┬─ibus-dconf───3*[{ibus-dconf}]
+        │      │                 │               │                 │             │             ├─ibus-engine-sim───2*[{ibus-engine-sim}]
+        │      │                 │               │                 │             │             └─2*[{ibus-daemon}]
+        │      │                 │               │                 │             └─10*[{gnome-shell}]
+        │      │                 │               │                 ├─gnome-software───3*[{gnome-software}]
+        │      │                 │               │                 ├─gsd-a11y-settin───3*[{gsd-a11y-settin}]
+        │      │                 │               │                 ├─gsd-clipboard───2*[{gsd-clipboard}]
+        │      │                 │               │                 ├─gsd-color───3*[{gsd-color}]
+        │      │                 │               │                 ├─gsd-datetime───3*[{gsd-datetime}]
+        │      │                 │               │                 ├─gsd-disk-utilit───2*[{gsd-disk-utilit}]
+        │      │                 │               │                 ├─gsd-housekeepin───3*[{gsd-housekeepin}]
+        │      │                 │               │                 ├─gsd-keyboard───3*[{gsd-keyboard}]
+        │      │                 │               │                 ├─gsd-media-keys───3*[{gsd-media-keys}]
+        │      │                 │               │                 ├─gsd-mouse───3*[{gsd-mouse}]
+        │      │                 │               │                 ├─gsd-power───3*[{gsd-power}]
+        │      │                 │               │                 ├─gsd-print-notif───2*[{gsd-print-notif}]
+        │      │                 │               │                 ├─gsd-rfkill───2*[{gsd-rfkill}]
+        │      │                 │               │                 ├─gsd-screensaver───2*[{gsd-screensaver}]
+        │      │                 │               │                 ├─gsd-sharing───3*[{gsd-sharing}]
+        │      │                 │               │                 ├─gsd-smartcard───4*[{gsd-smartcard}]
+        │      │                 │               │                 ├─gsd-sound───3*[{gsd-sound}]
+        │      │                 │               │                 ├─gsd-wacom───2*[{gsd-wacom}]
+        │      │                 │               │                 ├─gsd-xsettings───3*[{gsd-xsettings}]
+        │      │                 │               │                 ├─nautilus-deskto───3*[{nautilus-deskto}]
+        │      │                 │               │                 ├─ssh-agent
+        │      │                 │               │                 ├─update-notifier───3*[{update-notifier}]
+        │      │                 │               │                 └─3*[{gnome-session-b}]
+        │      │                 │               └─2*[{gdm-x-session}]
+        │      │                 └─2*[{gdm-session-wor}]
+        │      └─2*[{gdm3}]
+        ├─gnome-keyring-d───3*[{gnome-keyring-d}]
+        ├─gsd-printer───2*[{gsd-printer}]
+        ├─2*[ibus-x11───2*[{ibus-x11}]]
+        ├─2*[kerneloops]
+        ├─networkd-dispat───{networkd-dispat}
+        ├─packagekitd───2*[{packagekitd}]
+        ├─polkitd───2*[{polkitd}]
+        ├─pulseaudio───3*[{pulseaudio}]
+        ├─rsyslogd───3*[{rsyslogd}]
+        ├─rtkit-daemon───2*[{rtkit-daemon}]
+        ├─snapd───8*[{snapd}]
+        ├─systemd─┬─(sd-pam)
+        │         ├─at-spi-bus-laun─┬─dbus-daemon
+        │         │                 └─3*[{at-spi-bus-laun}]
+        │         ├─at-spi2-registr───2*[{at-spi2-registr}]
+        │         ├─dbus-daemon
+        │         ├─ibus-portal───2*[{ibus-portal}]
+        │         ├─pulseaudio───3*[{pulseaudio}]
+        │         └─xdg-permission-───2*[{xdg-permission-}]
+        ├─systemd─┬─(sd-pam)
+        │         ├─at-spi-bus-laun─┬─dbus-daemon
+        │         │                 └─3*[{at-spi-bus-laun}]
+        │         ├─at-spi2-registr───2*[{at-spi2-registr}]
+        │         ├─code─┬─code───code─┬─code
+        │         │      │             └─6*[{code}]
+        │         │      ├─code───code
+        │         │      ├─code───4*[{code}]
+        │         │      ├─code───18*[{code}]
+        │         │      ├─code─┬─code─┬─bash───script───bash───pstree
+        │         │      │      │      └─12*[{code}]
+        │         │      │      ├─code───13*[{code}]
+        │         │      │      └─18*[{code}]
+        │         │      ├─code─┬─cpptools─┬─cpptools-srv───9*[{cpptools-srv}]
+        │         │      │      │          └─21*[{cpptools}]
+        │         │      │      └─12*[{code}]
+        │         │      └─33*[{code}]
+        │         ├─dbus-daemon
+        │         ├─dconf-service───2*[{dconf-service}]
+        │         ├─evolution-addre─┬─evolution-addre───5*[{evolution-addre}]
+        │         │                 └─4*[{evolution-addre}]
+        │         ├─evolution-calen─┬─evolution-calen───8*[{evolution-calen}]
+        │         │                 └─4*[{evolution-calen}]
+        │         ├─evolution-sourc───3*[{evolution-sourc}]
+        │         ├─gnome-shell-cal───5*[{gnome-shell-cal}]
+        │         ├─gnome-terminal-─┬─bash
+        │         │                 └─3*[{gnome-terminal-}]
+        │         ├─goa-daemon───3*[{goa-daemon}]
+        │         ├─goa-identity-se───3*[{goa-identity-se}]
+        │         ├─gvfs-afc-volume───3*[{gvfs-afc-volume}]
+        │         ├─gvfs-goa-volume───2*[{gvfs-goa-volume}]
+        │         ├─gvfs-gphoto2-vo───2*[{gvfs-gphoto2-vo}]
+        │         ├─gvfs-mtp-volume───2*[{gvfs-mtp-volume}]
+        │         ├─gvfs-udisks2-vo───2*[{gvfs-udisks2-vo}]
+        │         ├─gvfsd─┬─gvfsd-trash───2*[{gvfsd-trash}]
+        │         │       └─2*[{gvfsd}]
+        │         ├─gvfsd-fuse───5*[{gvfsd-fuse}]
+        │         ├─gvfsd-metadata───2*[{gvfsd-metadata}]
+        │         ├─ibus-portal───2*[{ibus-portal}]
+        │         ├─nautilus───4*[{nautilus}]
+        │         ├─xdg-desktop-por───4*[{xdg-desktop-por}]
+        │         ├─xdg-desktop-por───2*[{xdg-desktop-por}]
+        │         ├─xdg-document-po───5*[{xdg-document-po}]
+        │         ├─xdg-permission-───2*[{xdg-permission-}]
+        │         ├─zeitgeist-daemo───2*[{zeitgeist-daemo}]
+        │         └─zeitgeist-fts───2*[{zeitgeist-fts}]
+        ├─systemd-journal
+        ├─systemd-logind
+        ├─systemd-resolve
+        ├─systemd-udevd
+        ├─udisksd───4*[{udisksd}]
+        ├─unattended-upgr───{unattended-upgr}
+        ├─update-manager───3*[{update-manager}]
+        ├─upowerd───2*[{upowerd}]
+        ├─whoopsie───2*[{whoopsie}]
+        └─wpa_supplicant
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ps -et[Klf
+F S UID        PID  PPID  C PRI  NI ADDR SZ WCHAN  STIME TTY          TIME CMD
+4 S root         1     0  0  80   0 - 39987 -      06:13 ?        00:00:03 /sbin/init splash
+1 S root         2     0  0  80   0 -     0 -      06:13 ?        00:00:00 [kthreadd]
+1 I root         3     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [rcu_gp]
+1 I root         4     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [rcu_par_gp]
+1 I root         6     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kworker/0:0H-kb]
+1 I root         9     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [mm_percpu_wq]
+1 S root        10     2  0  80   0 -     0 -      06:13 ?        00:00:00 [ksoftirqd/0]
+1 I root        11     2  0  80   0 -     0 -      06:13 ?        00:00:03 [rcu_sched]
+1 S root        12     2  0 -40   - -     0 -      06:13 ?        00:00:00 [migration/0]
+5 S root        13     2  0   9   - -     0 -      06:13 ?        00:00:00 [idle_inject/0]
+1 S root        14     2  0  80   0 -     0 -      06:13 ?        00:00:00 [cpuhp/0]
+5 S root        15     2  0  80   0 -     0 -      06:13 ?        00:00:00 [kdevtmpfs]
+1 I root        16     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [netns]
+1 S root        17     2  0  80   0 -     0 -      06:13 ?        00:00:00 [rcu_tasks_kthre]
+1 S root        18     2  0  80   0 -     0 -      06:13 ?        00:00:00 [kauditd]
+1 S root        19     2  0  80   0 -     0 -      06:13 ?        00:00:00 [khungtaskd]
+1 S root        20     2  0  80   0 -     0 -      06:13 ?        00:00:00 [oom_reaper]
+1 I root        21     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [writeback]
+1 S root        22     2  0  80   0 -     0 -      06:13 ?        00:00:00 [kcompactd0]
+1 S root        23     2  0  85   5 -     0 -      06:13 ?        00:00:00 [ksmd]
+1 S root        24     2  0  99  19 -     0 -      06:13 ?        00:00:00 [khugepaged]
+1 I root        70     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kintegrityd]
+1 I root        71     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kblockd]
+1 I root        72     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [blkcg_punt_bio]
+1 I root        73     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [tpm_dev_wq]
+1 I root        74     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [ata_sff]
+1 I root        75     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [md]
+1 I root        76     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [edac-poller]
+1 I root        77     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [devfreq_wq]
+1 S root        78     2  0 -40   - -     0 -      06:13 ?        00:00:00 [watchdogd]
+1 S root        83     2  0  80   0 -     0 -      06:13 ?        00:00:00 [kswapd0]
+1 S root        84     2  0  80   0 -     0 -      06:13 ?        00:00:00 [ecryptfs-kthrea]
+1 I root        86     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kthrotld]
+1 I root        87     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [acpi_thermal_pm]
+1 S root        88     2  0  80   0 -     0 -      06:13 ?        00:00:00 [scsi_eh_0]
+1 I root        89     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [scsi_tmf_0]
+1 S root        90     2  0  80   0 -     0 -      06:13 ?        00:00:00 [scsi_eh_1]
+1 I root        91     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [scsi_tmf_1]
+1 I root        93     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [vfio-irqfd-clea]
+1 I root        95     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [ipv6_addrconf]
+1 I root       104     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kstrp]
+1 I root       107     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kworker/u3:0]
+1 I root       120     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [charger_manager]
+1 I root       121     2  0  60 -20 -     0 -      06:13 ?        00:00:01 [kworker/0:1H-kb]
+1 S root       158     2  0  80   0 -     0 -      06:13 ?        00:00:00 [scsi_eh_2]
+1 I root       159     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [scsi_tmf_2]
+1 S root       182     2  0  80   0 -     0 -      06:13 ?        00:00:00 [jbd2/sda1-8]
+1 I root       183     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [ext4-rsv-conver]
+4 S root       220     1  0  79  -1 - 25856 -      06:13 ?        00:00:01 /lib/systemd/systemd-journald
+4 S root       238     1  0  80   0 - 11669 -      06:13 ?        00:00:00 /lib/systemd/systemd-udevd
+1 S root       259     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop0]
+1 S root       264     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop1]
+1 S root       267     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop2]
+1 S root       272     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop3]
+1 S root       277     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop4]
+1 S root       280     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop5]
+1 S root       282     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop6]
+1 S root       286     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop7]
+1 S root       290     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop8]
+1 S root       291     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop9]
+1 S root       294     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop10]
+1 S root       301     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop11]
+1 S root       304     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop12]
+1 S root       307     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop13]
+1 S root       318     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop14]
+1 S root       327     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop15]
+1 S root       335     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop16]
+1 S root       344     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop17]
+4 S systemd+   362     1  0  80   0 - 17723 -      06:13 ?        00:00:00 /lib/systemd/systemd-resolved
+1 I root       459     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [iprt-VBoxWQueue]
+4 S root       467     1  0  80   0 - 25148 -      06:13 ?        00:00:00 /usr/sbin/cupsd -l
+4 S root       468     1  0  80   0 - 108582 -     06:13 ?        00:00:00 /usr/sbin/ModemManager --filter-policy=strict
+4 S syslog     473     1  0  80   0 - 65760 -      06:13 ?        00:00:00 /usr/sbin/rsyslogd -n
+4 S root       480     1  0  80   0 -  1139 -      06:13 ?        00:00:00 /usr/sbin/acpid
+4 S root       484     1  0  80   0 - 42633 -      06:13 ?        00:00:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-trig
+4 S message+   485     1  0  80   0 - 12932 -      06:13 ?        00:00:02 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopi
+4 S root       497     1  0  80   0 - 140193 -     06:13 ?        00:00:01 /usr/sbin/NetworkManager --no-daemon
+4 S lp         500   467  0  80   0 - 21607 -      06:13 ?        00:00:00 /usr/lib/cups/notifier/dbus dbus://
+4 S root       510     1  0  80   0 -  7831 -      06:13 ?        00:00:00 /usr/sbin/cron -f
+4 S avahi      511     1  0  80   0 - 11815 -      06:13 ?        00:00:00 avahi-daemon: running [om-VirtualBox.local]
+4 S root       514     1  0  80   0 - 11309 -      06:13 ?        00:00:00 /sbin/wpa_supplicant -u -s -O /run/wpa_supplicant
+4 S root       517     1  0  80   0 - 71908 -      06:13 ?        00:00:00 /usr/lib/accountsservice/accounts-daemon
+1 S avahi      518   511  0  80   0 - 11770 -      06:13 ?        00:00:00 avahi-daemon: chroot helper
+4 S root       521     1  0  80   0 - 17647 -      06:13 ?        00:00:00 /lib/systemd/systemd-logind
+4 S root       522     1  0  80   0 - 125851 -     06:13 ?        00:00:00 /usr/lib/udisks2/udisksd
+4 S root       528     1  0  80   0 - 187123 -     06:13 ?        00:00:01 /usr/lib/snapd/snapd
+4 S root       550     1  0  80   0 - 75917 -      06:13 ?        00:00:00 /usr/sbin/cups-browsed
+4 S root       552     1  0  80   0 - 74087 -      06:13 ?        00:00:00 /usr/lib/policykit-1/polkitd --no-debug
+4 S root       564     1  0  80   0 - 46808 -      06:13 ?        00:00:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgra
+1 S root       609     1  0  80   0 - 21118 -      06:13 ?        00:00:00 /usr/sbin/apache2 -k start
+5 S www-data   611   609  0  80   0 - 208669 -     06:13 ?        00:00:00 /usr/sbin/apache2 -k start
+5 S www-data   612   609  0  80   0 - 208669 -     06:13 ?        00:00:00 /usr/sbin/apache2 -k start
+4 S whoopsie   692     1  0  80   0 - 116082 -     06:13 ?        00:00:00 /usr/bin/whoopsie -f
+1 S kernoops   694     1  0  80   0 - 14236 -      06:13 ?        00:00:00 /usr/sbin/kerneloops --test
+1 S kernoops   706     1  0  80   0 - 14236 -      06:13 ?        00:00:00 /usr/sbin/kerneloops
+1 I root       734     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [cryptd]
+1 S root       737     2  0   9   - -     0 -      06:13 ?        00:00:00 [irq/18-vmwgfx]
+1 I root       738     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [ttm_swap]
+4 S root      1053     1  0  80   0 - 75271 -      06:13 ?        00:00:00 /usr/sbin/gdm3
+1 S root      1063     1  0  80   0 - 94615 -      06:13 ?        00:00:01 /usr/sbin/VBoxService --pidfile /var/run/vboxadd-service.sh
+4 S root      1072  1053  0  80   0 - 63612 -      06:13 ?        00:00:00 gdm-session-worker [pam/gdm-launch-environment]
+4 S gdm       1081     1  0  80   0 - 19225 -      06:13 ?        00:00:00 /lib/systemd/systemd --user
+5 S gdm       1082  1081  0  80   0 - 28523 -      06:13 ?        00:00:00 (sd-pam)
+4 S gdm       1093  1072  0  80   0 - 47673 -      06:13 tty1     00:00:00 /usr/lib/gdm3/gdm-wayland-session gnome-session --autostart /usr
+0 S gdm       1095  1081  0  80   0 - 12558 -      06:13 ?        00:00:00 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nop
+0 S gdm       1097  1093  0  80   0 - 137929 -     06:13 tty1     00:00:00 /usr/lib/gnome-session/gnome-session-binary --autostart /usr/sha
+0 S gdm       1103  1097  0  80   0 - 735947 -     06:13 tty1     00:00:15 /usr/bin/gnome-shell
+4 S root      1110     1  0  80   0 - 78822 -      06:13 ?        00:00:00 /usr/lib/upower/upowerd
+0 S gdm       1118  1103  0  80   0 - 56895 -      06:13 tty1     00:00:00 /usr/bin/Xwayland :1024 -rootless -terminate -accessx -core -lis
+0 S gdm       1121  1081  0  80   0 - 87352 -      06:13 ?        00:00:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+0 S gdm       1126  1121  0  80   0 - 12483 -      06:13 ?        00:00:00 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/a
+0 S gdm       1128  1081  0  80   0 - 55192 -      06:13 ?        00:00:00 /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+0 S gdm       1131  1081  0  80   0 - 329390 -     06:13 ?        00:00:00 /usr/bin/pulseaudio --daemonize=no
+4 S rtkit     1133     1  0  81   1 - 45878 -      06:13 ?        00:00:00 /usr/lib/rtkit/rtkit-daemon
+0 S gdm       1145  1103  0  80   0 - 106998 -     06:13 tty1     00:00:00 ibus-daemon --xim --panel disable
+0 S gdm       1148  1145  0  80   0 - 68410 -      06:13 tty1     00:00:00 /usr/lib/ibus/ibus-dconf
+0 S gdm       1151     1  0  80   0 - 122357 -     06:13 tty1     00:00:00 /usr/lib/ibus/ibus-x11 --kill-daemon
+0 S gdm       1155  1081  0  80   0 - 67896 -      06:13 ?        00:00:00 /usr/lib/ibus/ibus-portal
+0 S gdm       1162  1081  0  80   0 - 66114 -      06:13 ?        00:00:00 /usr/libexec/xdg-permission-store
+4 S root      1169     1  0  80   0 - 72442 -      06:13 ?        00:00:00 /usr/lib/x86_64-linux-gnu/boltd
+4 S root      1177     1  0  80   0 - 128670 -     06:13 ?        00:00:10 /usr/lib/packagekit/packagekitd
+0 S gdm       1180  1097  0  80   0 - 121864 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-xsettings
+0 S gdm       1184  1097  0  80   0 - 67763 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-a11y-settings
+0 S gdm       1186  1097  0  80   0 - 84145 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-clipboard
+0 S gdm       1189  1097  0  80   0 - 181328 -     06:13 tty1     00:00:01 /usr/lib/gnome-settings-daemon/gsd-color
+0 S gdm       1190  1097  0  80   0 - 96653 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-datetime
+0 S gdm       1191  1097  0  80   0 - 69158 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-housekeeping
+0 S gdm       1192  1097  0  80   0 - 124866 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-keyboard
+0 S gdm       1193  1097  0  80   0 - 215443 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-media-keys
+0 S gdm       1196  1097  0  80   0 - 48723 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-mouse
+0 S gdm       1199  1097  0  80   0 - 145960 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-power
+0 S gdm       1202  1097  0  80   0 - 64979 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-print-notifications
+0 S gdm       1207  1097  0  80   0 - 48728 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-rfkill
+0 S gdm       1208  1097  0  80   0 - 67157 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-screensaver-proxy
+0 S gdm       1211  1097  0  80   0 - 74503 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-sharing
+0 S gdm       1214  1097  0  80   0 - 92740 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-smartcard
+0 S gdm       1220  1097  0  80   0 - 81967 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-sound
+0 S gdm       1228  1097  0  80   0 - 105360 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-wacom
+4 S colord    1244     1  0  80   0 - 79438 -      06:13 ?        00:00:00 /usr/lib/colord/colord
+0 S gdm       1271  1145  0  80   0 - 49446 -      06:13 tty1     00:00:00 /usr/lib/ibus/ibus-engine-simple
+4 S root      1539  1053  0  80   0 - 102058 -     06:32 ?        00:00:00 gdm-session-worker [pam/gdm-password]
+4 S om        1543     1  0  80   0 - 19252 ep_pol 06:32 ?        00:00:00 /lib/systemd/systemd --user
+5 S om        1544  1543  0  80   0 - 49005 -      06:32 ?        00:00:00 (sd-pam)
+1 S om        1557     1  0  80   0 - 70319 -      06:32 ?        00:00:00 /usr/bin/gnome-keyring-daemon --daemonize --login
+4 S om        1561  1539  0  80   0 - 51257 poll_s 06:32 tty2     00:00:00 /usr/lib/gdm3/gdm-x-session --run-script env GNOME_SHELL_SESSION
+4 S om        1563  1561  0  80   0 - 141982 ep_pol 06:32 tty2    00:01:13 /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xau
+0 S om        1566  1543  0  80   0 - 13015 ep_pol 06:32 ?        00:00:01 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nop
+0 S om        1570  1561  0  80   0 - 158542 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-session/gnome-session-binary --session=ubuntu
+1 S om        1669     1  0  80   0 - 12116 wait   06:32 ?        00:00:00 /usr/bin/VBoxClient --clipboard
+1 S om        1670  1669  0  80   0 - 45693 rtR0Se 06:32 ?        00:00:00 /usr/bin/VBoxClient --clipboard
+1 S om        1680     1  0  80   0 - 12116 wait   06:32 ?        00:00:00 /usr/bin/VBoxClient --seamless
+1 S om        1681  1680  0  80   0 - 45175 rtR0Se 06:32 ?        00:00:00 /usr/bin/VBoxClient --seamless
+1 S om        1687     1  0  80   0 - 12116 wait   06:32 ?        00:00:00 /usr/bin/VBoxClient --draganddrop
+1 S om        1688  1687  0  80   0 - 61688 futex_ 06:32 ?        00:00:22 /usr/bin/VBoxClient --draganddrop
+1 S om        1695     1  0  80   0 - 12116 wait   06:32 ?        00:00:00 /usr/bin/VBoxClient --vmsvga
+1 S om        1696  1695  0  80   0 - 46295 rtR0Se 06:32 ?        00:00:00 /usr/bin/VBoxClient --vmsvga
+1 S om        1705  1570  0  80   0 -  2828 -      06:32 ?        00:00:00 /usr/bin/ssh-agent /usr/bin/im-launch env GNOME_SHELL_SESSION_MO
+0 S om        1707  1543  0  80   0 - 87325 poll_s 06:32 ?        00:00:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+0 S om        1712  1707  0  80   0 - 12515 ep_pol 06:32 ?        00:00:00 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/a
+0 S om        1715  1543  0  80   0 - 55196 poll_s 06:32 ?        00:00:00 /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+0 S om        1733  1570  3  80   0 - 815435 poll_s 06:32 tty2    00:04:53 /usr/bin/gnome-shell
+0 S om        1739  1543  0  80   0 - 71216 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfsd
+0 S om        1744  1543  0  80   0 - 104029 futex_ 06:32 ?       00:00:00 /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
+1 S om        1755     1  0  80   0 - 333573 poll_s 06:32 ?       00:00:00 /usr/bin/pulseaudio --start --log-target=syslog
+0 S om        1766  1733  0  80   0 - 88679 poll_s 06:32 tty2     00:00:07 ibus-daemon --xim --panel disable
+0 S om        1770  1766  0  80   0 - 68412 poll_s 06:32 tty2     00:00:00 /usr/lib/ibus/ibus-dconf
+0 S om        1772     1  0  80   0 - 84208 poll_s 06:32 tty2     00:00:00 /usr/lib/ibus/ibus-x11 --kill-daemon
+0 S om        1775  1543  0  80   0 - 67896 poll_s 06:32 ?        00:00:00 /usr/lib/ibus/ibus-portal
+0 S om        1784  1543  0  80   0 - 66114 poll_s 06:32 ?        00:00:00 /usr/libexec/xdg-permission-store
+0 S om        1789  1543  0  80   0 - 172417 poll_s 06:32 ?       00:00:00 /usr/lib/gnome-shell/gnome-shell-calendar-server
+0 S om        1793  1543  0  80   0 - 242966 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-source-registry
+0 S om        1800  1543  0  80   0 - 214399 poll_s 06:32 ?       00:00:00 /usr/lib/gnome-online-accounts/goa-daemon
+0 S om        1812  1543  0  80   0 - 92497 poll_s 06:32 ?        00:00:00 /usr/lib/gnome-online-accounts/goa-identity-service
+0 S om        1824  1543  0  80   0 - 47010 poll_s 06:32 ?        00:00:00 /usr/lib/dconf/dconf-service
+0 S om        1827  1543  0  80   0 - 74834 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-udisks2-volume-monitor
+0 S om        1831  1543  0  80   0 - 66735 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-goa-volume-monitor
+0 S om        1835  1543  0  80   0 - 70389 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-gphoto2-volume-monitor
+0 S om        1839  1543  0  80   0 - 67191 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-mtp-volume-monitor
+0 S om        1843  1543  0  80   0 - 92931 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-afc-volume-monitor
+0 S om        1848  1570  0  80   0 - 127477 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-power
+0 S om        1849  1570  0  80   0 - 85556 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-print-notifications
+0 S om        1851  1570  0  80   0 - 104060 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-rfkill
+0 S om        1852  1570  0  80   0 - 67157 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-screensaver-proxy
+0 S om        1853  1570  0  80   0 - 111435 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-sharing
+0 S om        1857  1570  0  80   0 - 121842 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-xsettings
+0 S om        1863  1570  0  80   0 - 81968 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-sound
+0 S om        1866  1570  0  80   0 - 111174 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-smartcard
+0 S om        1869  1570  0  80   0 - 105283 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-wacom
+0 S om        1879  1570  0  80   0 - 67764 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-a11y-settings
+0 S om        1883  1570  0  80   0 - 84109 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-clipboard
+0 S om        1885  1570  0  80   0 - 197680 poll_s 06:32 tty2    00:00:01 /usr/lib/gnome-settings-daemon/gsd-color
+0 S om        1886  1570  0  80   0 - 115661 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-datetime
+0 S om        1893  1570  0  80   0 - 89336 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-housekeeping
+0 S om        1894  1570  0  80   0 - 124821 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-keyboard
+0 S om        1897  1570  0  80   0 - 196893 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-media-keys
+0 S om        1899  1570  0  80   0 - 67764 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-mouse
+0 S om        1938     1  0  80   0 - 125417 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-printer
+0 S om        1954  1570  0  80   0 - 67984 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-disk-utility/gsd-disk-utility-notify
+0 S om        1957  1570  0  80   0 - 260539 poll_s 06:32 tty2    00:00:03 nautilus-desktop
+0 S om        1992  1739  0  80   0 - 108719 poll_s 06:32 ?       00:00:00 /usr/lib/gvfs/gvfsd-trash --spawner :1.13 /org/gtk/gvfs/exec_spa
+0 S om        2013  1543  0  80   0 - 221395 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-calendar-factory
+0 S om        2020  2013  0  80   0 - 233170 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-calendar-factory-subprocess --facto
+0 S om        2031  1543  0  80   0 - 181403 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-addressbook-factory
+0 S om        2040  2031  0  80   0 - 219760 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-addressbook-factory-subprocess --fa
+0 S om        2059  1766  0  80   0 - 49446 poll_s 06:32 tty2     00:00:02 /usr/lib/ibus/ibus-engine-simple
+0 S om        2078  1543  0  80   0 - 49393 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfsd-metadata
+0 S om        2296  1570  0  80   0 - 165880 poll_s 06:33 tty2    00:00:00 update-notifier
+0 S om        2298  1570  0  80   0 - 268491 poll_s 06:33 tty2    00:00:03 /usr/bin/gnome-software --gapplication-service
+4 S root      2369     1  0  80   0 - 141478 -     06:33 ?        00:00:00 /usr/lib/fwupd/fwupd
+0 S om        2426     1  0  90  10 - 187245 poll_s 06:33 tty2    00:00:08 /usr/bin/python3 /usr/bin/update-manager --no-update --no-focus-
+0 S om        2581  1570  0  80   0 - 217772 poll_s 06:34 tty2    00:00:00 /usr/lib/deja-dup/deja-dup-monitor
+0 S om        4867  1543  0  80   0 - 106609 poll_s 07:04 ?       00:00:00 /usr/bin/zeitgeist-daemon
+0 S om        4873  1543  0  80   0 - 81687 poll_s 07:04 ?        00:00:00 /usr/lib/zeitgeist/zeitgeist/zeitgeist-fts
+4 S om        5624  1543  0  80   0 - 10675219 poll_s 07:23 ?     00:00:18 /usr/share/code/code .
+0 S om        5627  5624  0  80   0 - 85333 poll_s 07:23 ?        00:00:00 /usr/share/code/code --type=zygote --no-zygote-sandbox
+4 S om        5628  5624  0  80   0 - 85333 wait   07:23 ?        00:00:00 /usr/share/code/code --type=zygote
+1 S om        5630  5628  0  80   0 - 85333 poll_s 07:23 ?        00:00:00 /usr/share/code/code --type=zygote
+0 S om        5671  5624  0  80   0 - 100271 futex_ 07:23 ?       00:00:00 /usr/share/code/code --type=utility --utility-sub-type=network.m
+1 S om        5672  5627  0  80   0 - 127739 poll_s 07:23 ?       00:00:44 /usr/share/code/code --type=gpu-process --field-trial-handle=603
+1 S om        5678  5672  0  80   0 - 91567 skb_wa 07:23 ?        00:00:00 /usr/share/code/code --type=broker
+0 R om        5690  5624  2  80   0 - 13270595 -   07:23 ?        00:02:04 /usr/share/code/code --type=renderer --disable-color-correct-ren
+0 S om        5706  5624  0  80   0 - 10618877 futex_ 07:23 ?     00:00:07 /usr/share/code/code --type=renderer --disable-color-correct-ren
+0 S om        5722  5624  0  80   0 - 9552271 ep_pol 07:23 ?      00:00:17 /usr/share/code/code --ms-enable-electron-run-as-node --inspect-
+0 R om        5734  5706  0  80   0 - 9547465 -    07:23 ?        00:00:09 /usr/share/code/code --ms-enable-electron-run-as-node /usr/share
+0 S om        5756  5706  0  80   0 - 9550574 ep_pol 07:23 ?      00:00:03 /usr/share/code/code --ms-enable-electron-run-as-node /usr/share
+0 S om        5838  5734  0  80   0 -  5714 wait   07:26 pts/2    00:00:00 /bin/bash
+0 S om        6839  5722  0  80   0 - 184595 unix_s 07:39 ?       00:00:07 /home/om/.vscode/extensions/ms-vscode.cpptools-1.9.2/bin/cpptool
+4 S om        7093     1  0  80   0 - 4382886 poll_s 07:51 tty2   00:00:32 /opt/google/chrome/chrome --enable-crashpad
+0 S om        7098  7093  0  80   0 -  1903 pipe_w 07:51 tty2     00:00:00 cat
+0 S om        7099  7093  0  80   0 -  1903 pipe_w 07:51 tty2     00:00:00 cat
+0 S om        7101     1  0  80   0 - 4202611 ep_pol 07:51 ?      00:00:00 /opt/google/chrome/chrome_crashpad_handler --monitor-self --moni
+0 S om        7103     1  0  80   0 - 4200302 ep_pol 07:51 ?      00:00:00 /opt/google/chrome/chrome_crashpad_handler --no-periodic-tasks -
+0 S om        7109  7093  0  80   0 - 4298126 poll_s 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=zygote --no-zygote-sandbox --en
+4 S om        7110  7093  0  80   0 - 4298126 wait 07:51 tty2     00:00:00 /opt/google/chrome/chrome --type=zygote --enable-crashpad --cras
+4 S om        7111  7110  0  80   0 - 4221520 skb_wa 07:51 tty2   00:00:00 /opt/google/chrome/nacl_helper
+5 S om        7114  7110  0  80   0 - 4298126 poll_s 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=zygote --enable-crashpad --cras
+0 S om        7132  1543  0  80   0 - 110502 poll_s 07:51 ?       00:00:00 /usr/libexec/xdg-desktop-portal
+0 S om        7136  1543  0  80   0 - 105689 poll_s 07:51 ?       00:00:00 /usr/libexec/xdg-document-portal
+0 S om        7148  1543  0  80   0 - 138989 poll_s 07:51 ?       00:00:00 /usr/libexec/xdg-desktop-portal-gtk
+0 S om        7152  7093  0  80   0 - 4316635 futex_ 07:51 tty2   00:00:10 /opt/google/chrome/chrome --type=utility --utility-sub-type=netw
+1 S om        7156  7114  0  80   0 - 4308471 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=utility --utility-sub-type=stor
+1 S om        7277  7109  1  80   0 - 4329316 poll_s 07:51 tty2   00:01:15 /opt/google/chrome/chrome --type=gpu-process --enable-crashpad -
+1 S om        7424  7114  0  80   0 - 6422108 futex_ 07:51 tty2   00:00:04 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7448  7114  0  80   0 - 6419639 futex_ 07:51 tty2   00:00:03 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7459  7114  0  80   0 - 6419828 futex_ 07:51 tty2   00:00:02 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7469  7114  0  80   0 - 6423026 futex_ 07:51 tty2   00:00:09 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7480  7114  0  80   0 - 6416511 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7487  7114  0  80   0 - 6416511 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7502  7114  0  80   0 - 6416511 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7525  7114  0  80   0 - 6416511 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7537  7114  0  80   0 - 6416511 futex_ 07:52 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7548  7114  0  80   0 - 6416511 futex_ 07:52 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7559  7114  0  80   0 - 6416511 futex_ 07:52 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7569  7114  0  80   0 - 6418957 futex_ 07:52 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7580  7114 19  80   0 - 7479856 futex_ 07:52 tty2   00:13:24 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7592  7114  0  80   0 - 9573190 futex_ 07:52 tty2   00:00:02 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7856  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7907  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7912  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7922  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7926  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7961  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7968  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7994  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8005  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8023  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8034  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8045  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8051  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8070  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8081  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8082  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8114  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8125  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8324  7114  0  80   0 - 6416476 futex_ 08:03 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+0 S om        8367  1543  0  80   0 - 248177 poll_s 08:03 ?       00:00:02 /usr/bin/nautilus --gapplication-service
+0 S om        8778  5838  0  80   0 -  5562 poll_s 08:08 pts/2    00:00:00 script 09_03_2022.txt
+0 S om        8779  8778  0  80   0 -  5714 wait   08:08 pts/0    00:00:00 bash -i
+1 I root      9338     2  0  80   0 -     0 -      08:22 ?        00:00:01 [kworker/0:0-eve]
+1 I root     10497     2  0  80   0 -     0 -      08:44 ?        00:00:00 [kworker/u2:0-ev]
+1 I root     10521     2  0  80   0 -     0 -      08:45 ?        00:00:00 [kworker/0:2-eve]
+0 S om       10624  1543  0  80   0 - 199596 poll_s 08:48 ?       00:00:02 /usr/lib/gnome-terminal/gnome-terminal-server
+0 S om       10634 10624  0  80   0 -  5711 poll_s 08:48 pts/1    00:00:00 bash
+0 S om       10715  6839  0  80   0 - 1205459 futex_ 08:53 ?      00:00:00 /home/om/.vscode/extensions/ms-vscode.cpptools-1.9.2/bin/cpptool
+1 I root     10974     2  0  80   0 -     0 -      08:56 ?        00:00:00 [kworker/u2:2-ev]
+1 I root     11139     2  0  80   0 -     0 -      09:00 ?        00:00:00 [kworker/0:1-eve]
+4 S root     11151   497  0  80   0 -  6497 -      09:00 ?        00:00:00 /sbin/dhclient -d -q -sf /usr/lib/NetworkManager/nm-dhcp-helper 
+4 R om       11265  8779  0  80   0 -  9343 -      09:02 pts/0    00:00:00 ps -elf
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ pd
+
+Command 'pd' not found, but can be installed with:
+
+sudo apt install puredata-core
+
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ps
+  PID TTY          TIME CMD
+ 8779 pts/0    00:00:00 bash
+11301 pts/0    00:00:00 ps
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc fork.c 
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc fork.c ps[Kds -elf[1Ptree tree./a.outgcc getpid.c [6P./a.out
+my process pid is 12174
+my process ppid is 8779
+linux kernal]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ my process ppid is 1543
+linux kernal^C
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outgcc fork.c 
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc fork.c [4P./a.out
+my process pid is 12287
+my process ppid is 8779
+linux kernal]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ my process ppid is 1543
+linux kernalmy process ppid is 1543
+linux kernalmy process ppid is 1543
+linux kernalmy process ppid is 1543
+linux kernalmy process ppid is 1543
+linux kernalmy process ppid is 1543
+linux kernalmy process ppid is 1543
+linux kernal^C
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outgcc fork.c 
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc fork.c [4P./a.out
+my process pid is 12374
+my process ppid is 8779
+linux kernal]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ my process ppid is 1543
+linux kernal^C
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outgcc fork.c 
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc fork.c [4P./a.out
+my process pid is 12610
+my process ppid is 8779
+linux kernal
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ my process ppid is 1543
+linux kernal
+^C
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outgcc fork.c 
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc fork.c [4P./a.out
+my process pid is 12690
+my process ppid is 8779
+linux kernal
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ linux kernal
+my process ppid is 1543
+linux kernal
+linux kernal
+^C
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ [K]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ [K]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outgcc fork.c [1@1
+[01m[Kgcc:[m[K [01;31m[Kerror: [m[Kfork1.c: No such file or directory
+[01m[Kgcc:[m[K [01;31m[Kfatal error: [m[Kno input files
+compilation terminated.
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc fork1.c 
+[01m[Kgcc:[m[K [01;31m[Kerror: [m[Kfork1.c: No such file or directory
+[01m[Kgcc:[m[K [01;31m[Kfatal error: [m[Kno input files
+compilation terminated.
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ls
+09_03_2022.txt  [0m[01;32ma.out[0m  dup1.c  dup2.c  fcntl.c  fork2.c  fork.c  getpid.c  [01;32mlinux1.txt[0m  [01;32mlinux.txt[0m
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ lsgcc fork1.c [1P[1@2
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc fork2.c ls[Kgcc fork1.c [5P./a.outgcc fork.c [4P./a.out
+my process pid is 13183
+my process pid is 13183
+my process ppid is 8779
+new child process pid is 13184
+new parent process ppid is 13183
+^C
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outgcc fork2.c 
+[01m[Kfork2.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Kfork2.c:36:1:[m[K [01;31m[Kerror: [m[Kexpected declaration or statement at end of input
+ [01;31m[K}[m[K
+ [01;31m[K^[m[K
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc fork2.c 
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc fork2.c [5P./a.out
+my process pid is 13366
+my process pid is 13366
+my process ppid is 8779
+this is a parent process
+new child process pid is 13367
+new parent process ppid is 13366
+this is a child process
+^C
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ps -elf
+F S UID        PID  PPID  C PRI  NI ADDR SZ WCHAN  STIME TTY          TIME CMD
+4 S root         1     0  0  80   0 - 39987 -      06:13 ?        00:00:03 /sbin/init splash
+1 S root         2     0  0  80   0 -     0 -      06:13 ?        00:00:00 [kthreadd]
+1 I root         3     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [rcu_gp]
+1 I root         4     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [rcu_par_gp]
+1 I root         6     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kworker/0:0H-kb]
+1 I root         9     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [mm_percpu_wq]
+1 S root        10     2  0  80   0 -     0 -      06:13 ?        00:00:00 [ksoftirqd/0]
+1 I root        11     2  0  80   0 -     0 -      06:13 ?        00:00:04 [rcu_sched]
+1 S root        12     2  0 -40   - -     0 -      06:13 ?        00:00:00 [migration/0]
+5 S root        13     2  0   9   - -     0 -      06:13 ?        00:00:00 [idle_inject/0]
+1 S root        14     2  0  80   0 -     0 -      06:13 ?        00:00:00 [cpuhp/0]
+5 S root        15     2  0  80   0 -     0 -      06:13 ?        00:00:00 [kdevtmpfs]
+1 I root        16     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [netns]
+1 S root        17     2  0  80   0 -     0 -      06:13 ?        00:00:00 [rcu_tasks_kthre]
+1 S root        18     2  0  80   0 -     0 -      06:13 ?        00:00:00 [kauditd]
+1 S root        19     2  0  80   0 -     0 -      06:13 ?        00:00:00 [khungtaskd]
+1 S root        20     2  0  80   0 -     0 -      06:13 ?        00:00:00 [oom_reaper]
+1 I root        21     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [writeback]
+1 S root        22     2  0  80   0 -     0 -      06:13 ?        00:00:00 [kcompactd0]
+1 S root        23     2  0  85   5 -     0 -      06:13 ?        00:00:00 [ksmd]
+1 S root        24     2  0  99  19 -     0 -      06:13 ?        00:00:00 [khugepaged]
+1 I root        70     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kintegrityd]
+1 I root        71     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kblockd]
+1 I root        72     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [blkcg_punt_bio]
+1 I root        73     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [tpm_dev_wq]
+1 I root        74     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [ata_sff]
+1 I root        75     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [md]
+1 I root        76     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [edac-poller]
+1 I root        77     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [devfreq_wq]
+1 S root        78     2  0 -40   - -     0 -      06:13 ?        00:00:00 [watchdogd]
+1 S root        83     2  0  80   0 -     0 -      06:13 ?        00:00:00 [kswapd0]
+1 S root        84     2  0  80   0 -     0 -      06:13 ?        00:00:00 [ecryptfs-kthrea]
+1 I root        86     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kthrotld]
+1 I root        87     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [acpi_thermal_pm]
+1 S root        88     2  0  80   0 -     0 -      06:13 ?        00:00:00 [scsi_eh_0]
+1 I root        89     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [scsi_tmf_0]
+1 S root        90     2  0  80   0 -     0 -      06:13 ?        00:00:00 [scsi_eh_1]
+1 I root        91     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [scsi_tmf_1]
+1 I root        93     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [vfio-irqfd-clea]
+1 I root        95     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [ipv6_addrconf]
+1 I root       104     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kstrp]
+1 I root       107     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kworker/u3:0]
+1 I root       120     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [charger_manager]
+1 I root       121     2  0  60 -20 -     0 -      06:13 ?        00:00:01 [kworker/0:1H-kb]
+1 S root       158     2  0  80   0 -     0 -      06:13 ?        00:00:00 [scsi_eh_2]
+1 I root       159     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [scsi_tmf_2]
+1 S root       182     2  0  80   0 -     0 -      06:13 ?        00:00:00 [jbd2/sda1-8]
+1 I root       183     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [ext4-rsv-conver]
+4 S root       220     1  0  79  -1 - 27929 -      06:13 ?        00:00:01 /lib/systemd/systemd-journald
+4 S root       238     1  0  80   0 - 11669 -      06:13 ?        00:00:00 /lib/systemd/systemd-udevd
+1 S root       259     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop0]
+1 S root       264     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop1]
+1 S root       267     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop2]
+1 S root       272     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop3]
+1 S root       277     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop4]
+1 S root       280     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop5]
+1 S root       282     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop6]
+1 S root       286     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop7]
+1 S root       290     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop8]
+1 S root       291     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop9]
+1 S root       294     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop10]
+1 S root       301     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop11]
+1 S root       304     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop12]
+1 S root       307     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop13]
+1 S root       318     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop14]
+1 S root       327     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop15]
+1 S root       335     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop16]
+1 S root       344     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop17]
+4 S systemd+   362     1  0  80   0 - 17723 -      06:13 ?        00:00:01 /lib/systemd/systemd-resolved
+1 I root       459     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [iprt-VBoxWQueue]
+4 S root       467     1  0  80   0 - 25148 -      06:13 ?        00:00:00 /usr/sbin/cupsd -l
+4 S root       468     1  0  80   0 - 108582 -     06:13 ?        00:00:00 /usr/sbin/ModemManager --filter-policy=strict
+4 S syslog     473     1  0  80   0 - 65760 -      06:13 ?        00:00:00 /usr/sbin/rsyslogd -n
+4 S root       480     1  0  80   0 -  1139 -      06:13 ?        00:00:00 /usr/sbin/acpid
+4 S root       484     1  0  80   0 - 42633 -      06:13 ?        00:00:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-trig
+4 S message+   485     1  0  80   0 - 12950 -      06:13 ?        00:00:03 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopi
+4 S root       497     1  0  80   0 - 140193 -     06:13 ?        00:00:02 /usr/sbin/NetworkManager --no-daemon
+4 S lp         500   467  0  80   0 - 21607 -      06:13 ?        00:00:00 /usr/lib/cups/notifier/dbus dbus://
+4 S root       510     1  0  80   0 -  7831 -      06:13 ?        00:00:00 /usr/sbin/cron -f
+4 S avahi      511     1  0  80   0 - 11815 -      06:13 ?        00:00:00 avahi-daemon: running [om-VirtualBox.local]
+4 S root       514     1  0  80   0 - 11309 -      06:13 ?        00:00:00 /sbin/wpa_supplicant -u -s -O /run/wpa_supplicant
+4 S root       517     1  0  80   0 - 71908 -      06:13 ?        00:00:00 /usr/lib/accountsservice/accounts-daemon
+1 S avahi      518   511  0  80   0 - 11770 -      06:13 ?        00:00:00 avahi-daemon: chroot helper
+4 S root       521     1  0  80   0 - 17647 -      06:13 ?        00:00:00 /lib/systemd/systemd-logind
+4 S root       522     1  0  80   0 - 125851 -     06:13 ?        00:00:00 /usr/lib/udisks2/udisksd
+4 S root       528     1  0  80   0 - 187123 -     06:13 ?        00:00:01 /usr/lib/snapd/snapd
+4 S root       550     1  0  80   0 - 75917 -      06:13 ?        00:00:00 /usr/sbin/cups-browsed
+4 S root       552     1  0  80   0 - 74087 -      06:13 ?        00:00:00 /usr/lib/policykit-1/polkitd --no-debug
+4 S root       564     1  0  80   0 - 46808 -      06:13 ?        00:00:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgra
+1 S root       609     1  0  80   0 - 21118 -      06:13 ?        00:00:00 /usr/sbin/apache2 -k start
+5 S www-data   611   609  0  80   0 - 208669 -     06:13 ?        00:00:00 /usr/sbin/apache2 -k start
+5 S www-data   612   609  0  80   0 - 208669 -     06:13 ?        00:00:00 /usr/sbin/apache2 -k start
+4 S whoopsie   692     1  0  80   0 - 134515 -     06:13 ?        00:00:00 /usr/bin/whoopsie -f
+1 S kernoops   694     1  0  80   0 - 14236 -      06:13 ?        00:00:00 /usr/sbin/kerneloops --test
+1 S kernoops   706     1  0  80   0 - 14236 -      06:13 ?        00:00:00 /usr/sbin/kerneloops
+1 I root       734     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [cryptd]
+1 S root       737     2  0   9   - -     0 -      06:13 ?        00:00:01 [irq/18-vmwgfx]
+1 I root       738     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [ttm_swap]
+4 S root      1053     1  0  80   0 - 75271 -      06:13 ?        00:00:00 /usr/sbin/gdm3
+1 S root      1063     1  0  80   0 - 94615 -      06:13 ?        00:00:02 /usr/sbin/VBoxService --pidfile /var/run/vboxadd-service.sh
+4 S root      1072  1053  0  80   0 - 63612 -      06:13 ?        00:00:00 gdm-session-worker [pam/gdm-launch-environment]
+4 S gdm       1081     1  0  80   0 - 19225 -      06:13 ?        00:00:00 /lib/systemd/systemd --user
+5 S gdm       1082  1081  0  80   0 - 28523 -      06:13 ?        00:00:00 (sd-pam)
+4 S gdm       1093  1072  0  80   0 - 47673 -      06:13 tty1     00:00:00 /usr/lib/gdm3/gdm-wayland-session gnome-session --autostart /usr
+0 S gdm       1095  1081  0  80   0 - 12558 -      06:13 ?        00:00:00 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nop
+0 S gdm       1097  1093  0  80   0 - 137929 -     06:13 tty1     00:00:00 /usr/lib/gnome-session/gnome-session-binary --autostart /usr/sha
+0 S gdm       1103  1097  0  80   0 - 735947 -     06:13 tty1     00:00:17 /usr/bin/gnome-shell
+4 S root      1110     1  0  80   0 - 78822 -      06:13 ?        00:00:00 /usr/lib/upower/upowerd
+0 S gdm       1118  1103  0  80   0 - 56895 -      06:13 tty1     00:00:00 /usr/bin/Xwayland :1024 -rootless -terminate -accessx -core -lis
+0 S gdm       1121  1081  0  80   0 - 87352 -      06:13 ?        00:00:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+0 S gdm       1126  1121  0  80   0 - 12483 -      06:13 ?        00:00:00 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/a
+0 S gdm       1128  1081  0  80   0 - 55192 -      06:13 ?        00:00:00 /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+0 S gdm       1131  1081  0  80   0 - 394926 -     06:13 ?        00:00:00 /usr/bin/pulseaudio --daemonize=no
+4 S rtkit     1133     1  0  81   1 - 45878 -      06:13 ?        00:00:00 /usr/lib/rtkit/rtkit-daemon
+0 S gdm       1145  1103  0  80   0 - 106998 -     06:13 tty1     00:00:00 ibus-daemon --xim --panel disable
+0 S gdm       1148  1145  0  80   0 - 68410 -      06:13 tty1     00:00:00 /usr/lib/ibus/ibus-dconf
+0 S gdm       1151     1  0  80   0 - 122357 -     06:13 tty1     00:00:00 /usr/lib/ibus/ibus-x11 --kill-daemon
+0 S gdm       1155  1081  0  80   0 - 67896 -      06:13 ?        00:00:00 /usr/lib/ibus/ibus-portal
+0 S gdm       1162  1081  0  80   0 - 66114 -      06:13 ?        00:00:00 /usr/libexec/xdg-permission-store
+4 S root      1169     1  0  80   0 - 72442 -      06:13 ?        00:00:00 /usr/lib/x86_64-linux-gnu/boltd
+4 S root      1177     1  0  80   0 - 128670 -     06:13 ?        00:00:10 /usr/lib/packagekit/packagekitd
+0 S gdm       1180  1097  0  80   0 - 121864 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-xsettings
+0 S gdm       1184  1097  0  80   0 - 67763 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-a11y-settings
+0 S gdm       1186  1097  0  80   0 - 84145 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-clipboard
+0 S gdm       1189  1097  0  80   0 - 181328 -     06:13 tty1     00:00:01 /usr/lib/gnome-settings-daemon/gsd-color
+0 S gdm       1190  1097  0  80   0 - 96653 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-datetime
+0 S gdm       1191  1097  0  80   0 - 69158 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-housekeeping
+0 S gdm       1192  1097  0  80   0 - 124866 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-keyboard
+0 S gdm       1193  1097  0  80   0 - 215443 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-media-keys
+0 S gdm       1196  1097  0  80   0 - 48723 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-mouse
+0 S gdm       1199  1097  0  80   0 - 216760 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-power
+0 S gdm       1202  1097  0  80   0 - 64979 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-print-notifications
+0 S gdm       1207  1097  0  80   0 - 48728 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-rfkill
+0 S gdm       1208  1097  0  80   0 - 67157 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-screensaver-proxy
+0 S gdm       1211  1097  0  80   0 - 74503 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-sharing
+0 S gdm       1214  1097  0  80   0 - 92740 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-smartcard
+0 S gdm       1220  1097  0  80   0 - 81967 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-sound
+0 S gdm       1228  1097  0  80   0 - 105360 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-wacom
+4 S colord    1244     1  0  80   0 - 79438 -      06:13 ?        00:00:00 /usr/lib/colord/colord
+0 S gdm       1271  1145  0  80   0 - 49446 -      06:13 tty1     00:00:00 /usr/lib/ibus/ibus-engine-simple
+4 S root      1539  1053  0  80   0 - 102058 -     06:32 ?        00:00:00 gdm-session-worker [pam/gdm-password]
+4 S om        1543     1  0  80   0 - 19252 ep_pol 06:32 ?        00:00:00 /lib/systemd/systemd --user
+5 S om        1544  1543  0  80   0 - 49005 -      06:32 ?        00:00:00 (sd-pam)
+1 S om        1557     1  0  80   0 - 70319 -      06:32 ?        00:00:00 /usr/bin/gnome-keyring-daemon --daemonize --login
+4 S om        1561  1539  0  80   0 - 51257 poll_s 06:32 tty2     00:00:00 /usr/lib/gdm3/gdm-x-session --run-script env GNOME_SHELL_SESSION
+4 S om        1563  1561  0  80   0 - 141914 ep_pol 06:32 tty2    00:01:27 /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xau
+0 S om        1566  1543  0  80   0 - 13015 ep_pol 06:32 ?        00:00:01 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nop
+0 S om        1570  1561  0  80   0 - 158542 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-session/gnome-session-binary --session=ubuntu
+1 S om        1669     1  0  80   0 - 12116 wait   06:32 ?        00:00:00 /usr/bin/VBoxClient --clipboard
+1 S om        1670  1669  0  80   0 - 45693 rtR0Se 06:32 ?        00:00:00 /usr/bin/VBoxClient --clipboard
+1 S om        1680     1  0  80   0 - 12116 wait   06:32 ?        00:00:00 /usr/bin/VBoxClient --seamless
+1 S om        1681  1680  0  80   0 - 45175 rtR0Se 06:32 ?        00:00:00 /usr/bin/VBoxClient --seamless
+1 S om        1687     1  0  80   0 - 12116 wait   06:32 ?        00:00:00 /usr/bin/VBoxClient --draganddrop
+1 S om        1688  1687  0  80   0 - 61688 futex_ 06:32 ?        00:00:29 /usr/bin/VBoxClient --draganddrop
+1 S om        1695     1  0  80   0 - 12116 wait   06:32 ?        00:00:00 /usr/bin/VBoxClient --vmsvga
+1 S om        1696  1695  0  80   0 - 46295 rtR0Se 06:32 ?        00:00:00 /usr/bin/VBoxClient --vmsvga
+1 S om        1705  1570  0  80   0 -  2828 -      06:32 ?        00:00:00 /usr/bin/ssh-agent /usr/bin/im-launch env GNOME_SHELL_SESSION_MO
+0 S om        1707  1543  0  80   0 - 87325 poll_s 06:32 ?        00:00:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+0 S om        1712  1707  0  80   0 - 12515 ep_pol 06:32 ?        00:00:00 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/a
+0 S om        1715  1543  0  80   0 - 55196 poll_s 06:32 ?        00:00:00 /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+0 S om        1733  1570  2  80   0 - 818712 poll_s 06:32 tty2    00:05:47 /usr/bin/gnome-shell
+0 S om        1739  1543  0  80   0 - 71216 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfsd
+0 S om        1744  1543  0  80   0 - 104029 futex_ 06:32 ?       00:00:00 /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
+1 S om        1755     1  0  80   0 - 399109 poll_s 06:32 ?       00:00:00 /usr/bin/pulseaudio --start --log-target=syslog
+0 S om        1766  1733  0  80   0 - 88679 poll_s 06:32 tty2     00:00:08 ibus-daemon --xim --panel disable
+0 S om        1770  1766  0  80   0 - 68412 poll_s 06:32 tty2     00:00:00 /usr/lib/ibus/ibus-dconf
+0 S om        1772     1  0  80   0 - 84208 poll_s 06:32 tty2     00:00:00 /usr/lib/ibus/ibus-x11 --kill-daemon
+0 S om        1775  1543  0  80   0 - 67896 poll_s 06:32 ?        00:00:00 /usr/lib/ibus/ibus-portal
+0 S om        1784  1543  0  80   0 - 66114 poll_s 06:32 ?        00:00:00 /usr/libexec/xdg-permission-store
+0 S om        1789  1543  0  80   0 - 172417 poll_s 06:32 ?       00:00:00 /usr/lib/gnome-shell/gnome-shell-calendar-server
+0 S om        1793  1543  0  80   0 - 242966 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-source-registry
+0 S om        1800  1543  0  80   0 - 214399 poll_s 06:32 ?       00:00:00 /usr/lib/gnome-online-accounts/goa-daemon
+0 S om        1812  1543  0  80   0 - 92497 poll_s 06:32 ?        00:00:00 /usr/lib/gnome-online-accounts/goa-identity-service
+0 S om        1824  1543  0  80   0 - 47010 poll_s 06:32 ?        00:00:00 /usr/lib/dconf/dconf-service
+0 S om        1827  1543  0  80   0 - 74834 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-udisks2-volume-monitor
+0 S om        1831  1543  0  80   0 - 66735 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-goa-volume-monitor
+0 S om        1835  1543  0  80   0 - 70389 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-gphoto2-volume-monitor
+0 S om        1839  1543  0  80   0 - 67191 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-mtp-volume-monitor
+0 S om        1843  1543  0  80   0 - 92931 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-afc-volume-monitor
+0 S om        1848  1570  0  80   0 - 198277 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-power
+0 S om        1849  1570  0  80   0 - 85556 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-print-notifications
+0 S om        1851  1570  0  80   0 - 104060 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-rfkill
+0 S om        1852  1570  0  80   0 - 67157 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-screensaver-proxy
+0 S om        1853  1570  0  80   0 - 111435 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-sharing
+0 S om        1857  1570  0  80   0 - 121842 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-xsettings
+0 S om        1863  1570  0  80   0 - 81968 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-sound
+0 S om        1866  1570  0  80   0 - 111174 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-smartcard
+0 S om        1869  1570  0  80   0 - 105283 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-wacom
+0 S om        1879  1570  0  80   0 - 67764 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-a11y-settings
+0 S om        1883  1570  0  80   0 - 84109 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-clipboard
+0 S om        1885  1570  0  80   0 - 197680 poll_s 06:32 tty2    00:00:01 /usr/lib/gnome-settings-daemon/gsd-color
+0 S om        1886  1570  0  80   0 - 115661 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-datetime
+0 S om        1893  1570  0  80   0 - 89336 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-housekeeping
+0 S om        1894  1570  0  80   0 - 124821 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-keyboard
+0 S om        1897  1570  0  80   0 - 196893 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-media-keys
+0 S om        1899  1570  0  80   0 - 67764 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-mouse
+0 S om        1938     1  0  80   0 - 125417 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-printer
+0 S om        1954  1570  0  80   0 - 67984 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-disk-utility/gsd-disk-utility-notify
+0 S om        1957  1570  0  80   0 - 260539 poll_s 06:32 tty2    00:00:04 nautilus-desktop
+0 S om        1992  1739  0  80   0 - 108719 poll_s 06:32 ?       00:00:00 /usr/lib/gvfs/gvfsd-trash --spawner :1.13 /org/gtk/gvfs/exec_spa
+0 S om        2013  1543  0  80   0 - 221395 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-calendar-factory
+0 S om        2020  2013  0  80   0 - 233170 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-calendar-factory-subprocess --facto
+0 S om        2031  1543  0  80   0 - 181403 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-addressbook-factory
+0 S om        2040  2031  0  80   0 - 219760 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-addressbook-factory-subprocess --fa
+0 S om        2059  1766  0  80   0 - 49446 poll_s 06:32 tty2     00:00:02 /usr/lib/ibus/ibus-engine-simple
+0 S om        2078  1543  0  80   0 - 49393 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfsd-metadata
+0 S om        2296  1570  0  80   0 - 165880 poll_s 06:33 tty2    00:00:00 update-notifier
+0 S om        2298  1570  0  80   0 - 268491 poll_s 06:33 tty2    00:00:03 /usr/bin/gnome-software --gapplication-service
+0 S om        2426     1  0  90  10 - 187245 poll_s 06:33 tty2    00:00:08 /usr/bin/python3 /usr/bin/update-manager --no-update --no-focus-
+0 S om        2581  1570  0  80   0 - 217772 poll_s 06:34 tty2    00:00:00 /usr/lib/deja-dup/deja-dup-monitor
+0 S om        4867  1543  0  80   0 - 106609 poll_s 07:04 ?       00:00:00 /usr/bin/zeitgeist-daemon
+0 S om        4873  1543  0  80   0 - 81687 poll_s 07:04 ?        00:00:00 /usr/lib/zeitgeist/zeitgeist/zeitgeist-fts
+4 S om        5624  1543  0  80   0 - 10675219 poll_s 07:23 ?     00:00:24 /usr/share/code/code .
+0 S om        5627  5624  0  80   0 - 85333 poll_s 07:23 ?        00:00:00 /usr/share/code/code --type=zygote --no-zygote-sandbox
+4 S om        5628  5624  0  80   0 - 85333 wait   07:23 ?        00:00:00 /usr/share/code/code --type=zygote
+1 S om        5630  5628  0  80   0 - 85333 poll_s 07:23 ?        00:00:00 /usr/share/code/code --type=zygote
+0 S om        5671  5624  0  80   0 - 100271 futex_ 07:23 ?       00:00:00 /usr/share/code/code --type=utility --utility-sub-type=network.m
+1 S om        5672  5627  0  80   0 - 128187 poll_s 07:23 ?       00:01:05 /usr/share/code/code --type=gpu-process --field-trial-handle=603
+1 S om        5678  5672  0  80   0 - 91567 skb_wa 07:23 ?        00:00:00 /usr/share/code/code --type=broker
+0 R om        5690  5624  2  80   0 - 14321495 -   07:23 ?        00:03:05 /usr/share/code/code --type=renderer --disable-color-correct-ren
+0 S om        5706  5624  0  80   0 - 10618877 futex_ 07:23 ?     00:00:09 /usr/share/code/code --type=renderer --disable-color-correct-ren
+0 S om        5722  5624  0  80   0 - 9552271 ep_pol 07:23 ?      00:00:22 /usr/share/code/code --ms-enable-electron-run-as-node --inspect-
+0 R om        5734  5706  0  80   0 - 9547465 -    07:23 ?        00:00:13 /usr/share/code/code --ms-enable-electron-run-as-node /usr/share
+0 S om        5756  5706  0  80   0 - 9550574 ep_pol 07:23 ?      00:00:04 /usr/share/code/code --ms-enable-electron-run-as-node /usr/share
+0 S om        5838  5734  0  80   0 -  5714 wait   07:26 pts/2    00:00:00 /bin/bash
+0 S om        6839  5722  0  80   0 - 184595 unix_s 07:39 ?       00:00:10 /home/om/.vscode/extensions/ms-vscode.cpptools-1.9.2/bin/cpptool
+4 S om        7093     1  0  80   0 - 4382886 poll_s 07:51 tty2   00:00:42 /opt/google/chrome/chrome --enable-crashpad
+0 S om        7098  7093  0  80   0 -  1903 pipe_w 07:51 tty2     00:00:00 cat
+0 S om        7099  7093  0  80   0 -  1903 pipe_w 07:51 tty2     00:00:00 cat
+0 S om        7101     1  0  80   0 - 4202611 ep_pol 07:51 ?      00:00:00 /opt/google/chrome/chrome_crashpad_handler --monitor-self --moni
+0 S om        7103     1  0  80   0 - 4200302 ep_pol 07:51 ?      00:00:00 /opt/google/chrome/chrome_crashpad_handler --no-periodic-tasks -
+0 S om        7109  7093  0  80   0 - 4298126 poll_s 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=zygote --no-zygote-sandbox --en
+4 S om        7110  7093  0  80   0 - 4298126 wait 07:51 tty2     00:00:00 /opt/google/chrome/chrome --type=zygote --enable-crashpad --cras
+4 S om        7111  7110  0  80   0 - 4221520 skb_wa 07:51 tty2   00:00:00 /opt/google/chrome/nacl_helper
+5 S om        7114  7110  0  80   0 - 4298126 poll_s 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=zygote --enable-crashpad --cras
+0 S om        7132  1543  0  80   0 - 110502 poll_s 07:51 ?       00:00:00 /usr/libexec/xdg-desktop-portal
+0 S om        7136  1543  0  80   0 - 105689 poll_s 07:51 ?       00:00:00 /usr/libexec/xdg-document-portal
+0 S om        7148  1543  0  80   0 - 138989 poll_s 07:51 ?       00:00:00 /usr/libexec/xdg-desktop-portal-gtk
+0 S om        7152  7093  0  80   0 - 4316636 futex_ 07:51 tty2   00:00:12 /opt/google/chrome/chrome --type=utility --utility-sub-type=netw
+1 S om        7156  7114  0  80   0 - 4308471 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=utility --utility-sub-type=stor
+1 S om        7277  7109  1  80   0 - 4329316 poll_s 07:51 tty2   00:02:15 /opt/google/chrome/chrome --type=gpu-process --enable-crashpad -
+1 S om        7424  7114  0  80   0 - 6422108 futex_ 07:51 tty2   00:00:04 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7448  7114  0  80   0 - 6419639 futex_ 07:51 tty2   00:00:04 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7459  7114  0  80   0 - 6419828 futex_ 07:51 tty2   00:00:02 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7469  7114  0  80   0 - 6423026 futex_ 07:51 tty2   00:00:11 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7480  7114  0  80   0 - 6416511 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7487  7114  0  80   0 - 6416511 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7502  7114  0  80   0 - 6416511 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7525  7114  0  80   0 - 6416511 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7537  7114  0  80   0 - 6416511 futex_ 07:52 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7548  7114  0  80   0 - 6416511 futex_ 07:52 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7559  7114  0  80   0 - 6416511 futex_ 07:52 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7569  7114  0  80   0 - 6418957 futex_ 07:52 tty2   00:00:01 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7580  7114 20  80   0 - 7479856 futex_ 07:52 tty2   00:24:55 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7592  7114  0  80   0 - 9573190 futex_ 07:52 tty2   00:00:03 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7856  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7907  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7912  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7922  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7926  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7961  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7968  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7994  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8005  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8023  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8034  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8045  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8051  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8070  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8081  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8082  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8114  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8125  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8324  7114  0  80   0 - 6416476 futex_ 08:03 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+0 S om        8367  1543  0  80   0 - 248177 poll_s 08:03 ?       00:00:02 /usr/bin/nautilus --gapplication-service
+0 S om        8778  5838  0  80   0 -  5562 poll_s 08:08 pts/2    00:00:00 script 09_03_2022.txt
+0 S om        8779  8778  0  80   0 -  5714 wait   08:08 pts/0    00:00:00 bash -i
+1 I root      9338     2  0  80   0 -     0 -      08:22 ?        00:00:02 [kworker/0:0-eve]
+0 S om       10624  1543  0  80   0 - 199596 poll_s 08:48 ?       00:00:02 /usr/lib/gnome-terminal/gnome-terminal-server
+0 S om       10634 10624  0  80   0 -  5711 poll_s 08:48 pts/1    00:00:00 bash
+1 I root     11778     2  0  80   0 -     0 -      09:17 ?        00:00:00 [kworker/u2:1-ev]
+1 I root     12761     2  0  80   0 -     0 -      09:46 ?        00:00:00 [kworker/0:1-mm_]
+0 S om       12877  6839  0  80   0 - 1205459 futex_ 09:49 ?      00:00:00 /home/om/.vscode/extensions/ms-vscode.cpptools-1.9.2/bin/cpptool
+1 I root     12939     2  0  80   0 -     0 -      09:50 ?        00:00:00 [kworker/u2:2-ev]
+4 S root     13496   497  0  80   0 -  6497 -      09:55 ?        00:00:00 /sbin/dhclient -d -q -sf /usr/lib/NetworkManager/nm-dhcp-helper 
+4 R om       13532  8779  0  80   0 -  9343 -      09:56 pts/0    00:00:00 ps -elf
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ps -elf./a.outgcc fork2.c 
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc fork2.c [5Pps -elf
+F S UID        PID  PPID  C PRI  NI ADDR SZ WCHAN  STIME TTY          TIME CMD
+4 S root         1     0  0  80   0 - 39987 -      06:13 ?        00:00:03 /sbin/init splash
+1 S root         2     0  0  80   0 -     0 -      06:13 ?        00:00:00 [kthreadd]
+1 I root         3     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [rcu_gp]
+1 I root         4     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [rcu_par_gp]
+1 I root         6     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kworker/0:0H-kb]
+1 I root         9     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [mm_percpu_wq]
+1 S root        10     2  0  80   0 -     0 -      06:13 ?        00:00:00 [ksoftirqd/0]
+1 I root        11     2  0  80   0 -     0 -      06:13 ?        00:00:04 [rcu_sched]
+1 S root        12     2  0 -40   - -     0 -      06:13 ?        00:00:00 [migration/0]
+5 S root        13     2  0   9   - -     0 -      06:13 ?        00:00:00 [idle_inject/0]
+1 S root        14     2  0  80   0 -     0 -      06:13 ?        00:00:00 [cpuhp/0]
+5 S root        15     2  0  80   0 -     0 -      06:13 ?        00:00:00 [kdevtmpfs]
+1 I root        16     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [netns]
+1 S root        17     2  0  80   0 -     0 -      06:13 ?        00:00:00 [rcu_tasks_kthre]
+1 S root        18     2  0  80   0 -     0 -      06:13 ?        00:00:00 [kauditd]
+1 S root        19     2  0  80   0 -     0 -      06:13 ?        00:00:00 [khungtaskd]
+1 S root        20     2  0  80   0 -     0 -      06:13 ?        00:00:00 [oom_reaper]
+1 I root        21     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [writeback]
+1 S root        22     2  0  80   0 -     0 -      06:13 ?        00:00:00 [kcompactd0]
+1 S root        23     2  0  85   5 -     0 -      06:13 ?        00:00:00 [ksmd]
+1 S root        24     2  0  99  19 -     0 -      06:13 ?        00:00:00 [khugepaged]
+1 I root        70     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kintegrityd]
+1 I root        71     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kblockd]
+1 I root        72     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [blkcg_punt_bio]
+1 I root        73     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [tpm_dev_wq]
+1 I root        74     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [ata_sff]
+1 I root        75     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [md]
+1 I root        76     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [edac-poller]
+1 I root        77     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [devfreq_wq]
+1 S root        78     2  0 -40   - -     0 -      06:13 ?        00:00:00 [watchdogd]
+1 S root        83     2  0  80   0 -     0 -      06:13 ?        00:00:00 [kswapd0]
+1 S root        84     2  0  80   0 -     0 -      06:13 ?        00:00:00 [ecryptfs-kthrea]
+1 I root        86     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kthrotld]
+1 I root        87     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [acpi_thermal_pm]
+1 S root        88     2  0  80   0 -     0 -      06:13 ?        00:00:00 [scsi_eh_0]
+1 I root        89     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [scsi_tmf_0]
+1 S root        90     2  0  80   0 -     0 -      06:13 ?        00:00:00 [scsi_eh_1]
+1 I root        91     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [scsi_tmf_1]
+1 I root        93     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [vfio-irqfd-clea]
+1 I root        95     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [ipv6_addrconf]
+1 I root       104     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kstrp]
+1 I root       107     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kworker/u3:0]
+1 I root       120     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [charger_manager]
+1 I root       121     2  0  60 -20 -     0 -      06:13 ?        00:00:01 [kworker/0:1H-kb]
+1 S root       158     2  0  80   0 -     0 -      06:13 ?        00:00:00 [scsi_eh_2]
+1 I root       159     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [scsi_tmf_2]
+1 S root       182     2  0  80   0 -     0 -      06:13 ?        00:00:00 [jbd2/sda1-8]
+1 I root       183     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [ext4-rsv-conver]
+4 S root       220     1  0  79  -1 - 27929 -      06:13 ?        00:00:01 /lib/systemd/systemd-journald
+4 S root       238     1  0  80   0 - 11669 -      06:13 ?        00:00:00 /lib/systemd/systemd-udevd
+1 S root       259     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop0]
+1 S root       264     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop1]
+1 S root       267     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop2]
+1 S root       272     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop3]
+1 S root       277     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop4]
+1 S root       280     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop5]
+1 S root       282     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop6]
+1 S root       286     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop7]
+1 S root       290     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop8]
+1 S root       291     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop9]
+1 S root       294     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop10]
+1 S root       301     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop11]
+1 S root       304     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop12]
+1 S root       307     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop13]
+1 S root       318     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop14]
+1 S root       327     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop15]
+1 S root       335     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop16]
+1 S root       344     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop17]
+4 S systemd+   362     1  0  80   0 - 17723 -      06:13 ?        00:00:01 /lib/systemd/systemd-resolved
+1 I root       459     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [iprt-VBoxWQueue]
+4 S root       467     1  0  80   0 - 25148 -      06:13 ?        00:00:00 /usr/sbin/cupsd -l
+4 S root       468     1  0  80   0 - 108582 -     06:13 ?        00:00:00 /usr/sbin/ModemManager --filter-policy=strict
+4 S syslog     473     1  0  80   0 - 65760 -      06:13 ?        00:00:00 /usr/sbin/rsyslogd -n
+4 S root       480     1  0  80   0 -  1139 -      06:13 ?        00:00:00 /usr/sbin/acpid
+4 S root       484     1  0  80   0 - 42633 -      06:13 ?        00:00:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-trig
+4 S message+   485     1  0  80   0 - 12950 -      06:13 ?        00:00:03 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopi
+4 S root       497     1  0  80   0 - 140193 -     06:13 ?        00:00:02 /usr/sbin/NetworkManager --no-daemon
+4 S lp         500   467  0  80   0 - 21607 -      06:13 ?        00:00:00 /usr/lib/cups/notifier/dbus dbus://
+4 S root       510     1  0  80   0 -  7831 -      06:13 ?        00:00:00 /usr/sbin/cron -f
+4 S avahi      511     1  0  80   0 - 11815 -      06:13 ?        00:00:00 avahi-daemon: running [om-VirtualBox.local]
+4 S root       514     1  0  80   0 - 11309 -      06:13 ?        00:00:00 /sbin/wpa_supplicant -u -s -O /run/wpa_supplicant
+4 S root       517     1  0  80   0 - 71908 -      06:13 ?        00:00:00 /usr/lib/accountsservice/accounts-daemon
+1 S avahi      518   511  0  80   0 - 11770 -      06:13 ?        00:00:00 avahi-daemon: chroot helper
+4 S root       521     1  0  80   0 - 17647 -      06:13 ?        00:00:00 /lib/systemd/systemd-logind
+4 S root       522     1  0  80   0 - 125851 -     06:13 ?        00:00:00 /usr/lib/udisks2/udisksd
+4 S root       528     1  0  80   0 - 187123 -     06:13 ?        00:00:01 /usr/lib/snapd/snapd
+4 S root       550     1  0  80   0 - 75917 -      06:13 ?        00:00:00 /usr/sbin/cups-browsed
+4 S root       552     1  0  80   0 - 74087 -      06:13 ?        00:00:00 /usr/lib/policykit-1/polkitd --no-debug
+4 S root       564     1  0  80   0 - 46808 -      06:13 ?        00:00:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgra
+1 S root       609     1  0  80   0 - 21118 -      06:13 ?        00:00:00 /usr/sbin/apache2 -k start
+5 S www-data   611   609  0  80   0 - 208669 -     06:13 ?        00:00:00 /usr/sbin/apache2 -k start
+5 S www-data   612   609  0  80   0 - 208669 -     06:13 ?        00:00:00 /usr/sbin/apache2 -k start
+4 S whoopsie   692     1  0  80   0 - 134515 -     06:13 ?        00:00:00 /usr/bin/whoopsie -f
+1 S kernoops   694     1  0  80   0 - 14236 -      06:13 ?        00:00:00 /usr/sbin/kerneloops --test
+1 S kernoops   706     1  0  80   0 - 14236 -      06:13 ?        00:00:00 /usr/sbin/kerneloops
+1 I root       734     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [cryptd]
+1 S root       737     2  0   9   - -     0 -      06:13 ?        00:00:01 [irq/18-vmwgfx]
+1 I root       738     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [ttm_swap]
+4 S root      1053     1  0  80   0 - 75271 -      06:13 ?        00:00:00 /usr/sbin/gdm3
+1 S root      1063     1  0  80   0 - 94615 -      06:13 ?        00:00:02 /usr/sbin/VBoxService --pidfile /var/run/vboxadd-service.sh
+4 S root      1072  1053  0  80   0 - 63612 -      06:13 ?        00:00:00 gdm-session-worker [pam/gdm-launch-environment]
+4 S gdm       1081     1  0  80   0 - 19225 -      06:13 ?        00:00:00 /lib/systemd/systemd --user
+5 S gdm       1082  1081  0  80   0 - 28523 -      06:13 ?        00:00:00 (sd-pam)
+4 S gdm       1093  1072  0  80   0 - 47673 -      06:13 tty1     00:00:00 /usr/lib/gdm3/gdm-wayland-session gnome-session --autostart /usr
+0 S gdm       1095  1081  0  80   0 - 12558 -      06:13 ?        00:00:00 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nop
+0 S gdm       1097  1093  0  80   0 - 137929 -     06:13 tty1     00:00:00 /usr/lib/gnome-session/gnome-session-binary --autostart /usr/sha
+0 S gdm       1103  1097  0  80   0 - 735947 -     06:13 tty1     00:00:17 /usr/bin/gnome-shell
+4 S root      1110     1  0  80   0 - 78822 -      06:13 ?        00:00:00 /usr/lib/upower/upowerd
+0 S gdm       1118  1103  0  80   0 - 56895 -      06:13 tty1     00:00:00 /usr/bin/Xwayland :1024 -rootless -terminate -accessx -core -lis
+0 S gdm       1121  1081  0  80   0 - 87352 -      06:13 ?        00:00:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+0 S gdm       1126  1121  0  80   0 - 12483 -      06:13 ?        00:00:00 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/a
+0 S gdm       1128  1081  0  80   0 - 55192 -      06:13 ?        00:00:00 /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+0 S gdm       1131  1081  0  80   0 - 394926 -     06:13 ?        00:00:00 /usr/bin/pulseaudio --daemonize=no
+4 S rtkit     1133     1  0  81   1 - 45878 -      06:13 ?        00:00:00 /usr/lib/rtkit/rtkit-daemon
+0 S gdm       1145  1103  0  80   0 - 106998 -     06:13 tty1     00:00:00 ibus-daemon --xim --panel disable
+0 S gdm       1148  1145  0  80   0 - 68410 -      06:13 tty1     00:00:00 /usr/lib/ibus/ibus-dconf
+0 S gdm       1151     1  0  80   0 - 122357 -     06:13 tty1     00:00:00 /usr/lib/ibus/ibus-x11 --kill-daemon
+0 S gdm       1155  1081  0  80   0 - 67896 -      06:13 ?        00:00:00 /usr/lib/ibus/ibus-portal
+0 S gdm       1162  1081  0  80   0 - 66114 -      06:13 ?        00:00:00 /usr/libexec/xdg-permission-store
+4 S root      1169     1  0  80   0 - 72442 -      06:13 ?        00:00:00 /usr/lib/x86_64-linux-gnu/boltd
+4 S root      1177     1  0  80   0 - 128670 -     06:13 ?        00:00:10 /usr/lib/packagekit/packagekitd
+0 S gdm       1180  1097  0  80   0 - 121864 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-xsettings
+0 S gdm       1184  1097  0  80   0 - 67763 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-a11y-settings
+0 S gdm       1186  1097  0  80   0 - 84145 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-clipboard
+0 S gdm       1189  1097  0  80   0 - 181328 -     06:13 tty1     00:00:01 /usr/lib/gnome-settings-daemon/gsd-color
+0 S gdm       1190  1097  0  80   0 - 96653 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-datetime
+0 S gdm       1191  1097  0  80   0 - 69158 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-housekeeping
+0 S gdm       1192  1097  0  80   0 - 124866 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-keyboard
+0 S gdm       1193  1097  0  80   0 - 215443 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-media-keys
+0 S gdm       1196  1097  0  80   0 - 48723 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-mouse
+0 S gdm       1199  1097  0  80   0 - 216760 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-power
+0 S gdm       1202  1097  0  80   0 - 64979 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-print-notifications
+0 S gdm       1207  1097  0  80   0 - 48728 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-rfkill
+0 S gdm       1208  1097  0  80   0 - 67157 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-screensaver-proxy
+0 S gdm       1211  1097  0  80   0 - 74503 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-sharing
+0 S gdm       1214  1097  0  80   0 - 92740 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-smartcard
+0 S gdm       1220  1097  0  80   0 - 81967 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-sound
+0 S gdm       1228  1097  0  80   0 - 105360 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-wacom
+4 S colord    1244     1  0  80   0 - 79438 -      06:13 ?        00:00:00 /usr/lib/colord/colord
+0 S gdm       1271  1145  0  80   0 - 49446 -      06:13 tty1     00:00:00 /usr/lib/ibus/ibus-engine-simple
+4 S root      1539  1053  0  80   0 - 102058 -     06:32 ?        00:00:00 gdm-session-worker [pam/gdm-password]
+4 S om        1543     1  0  80   0 - 19252 ep_pol 06:32 ?        00:00:00 /lib/systemd/systemd --user
+5 S om        1544  1543  0  80   0 - 49005 -      06:32 ?        00:00:00 (sd-pam)
+1 S om        1557     1  0  80   0 - 70319 -      06:32 ?        00:00:00 /usr/bin/gnome-keyring-daemon --daemonize --login
+4 S om        1561  1539  0  80   0 - 51257 poll_s 06:32 tty2     00:00:00 /usr/lib/gdm3/gdm-x-session --run-script env GNOME_SHELL_SESSION
+4 S om        1563  1561  0  80   0 - 141914 ep_pol 06:32 tty2    00:01:28 /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xau
+0 S om        1566  1543  0  80   0 - 13015 ep_pol 06:32 ?        00:00:01 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nop
+0 S om        1570  1561  0  80   0 - 158542 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-session/gnome-session-binary --session=ubuntu
+1 S om        1669     1  0  80   0 - 12116 wait   06:32 ?        00:00:00 /usr/bin/VBoxClient --clipboard
+1 S om        1670  1669  0  80   0 - 45693 rtR0Se 06:32 ?        00:00:00 /usr/bin/VBoxClient --clipboard
+1 S om        1680     1  0  80   0 - 12116 wait   06:32 ?        00:00:00 /usr/bin/VBoxClient --seamless
+1 S om        1681  1680  0  80   0 - 45175 rtR0Se 06:32 ?        00:00:00 /usr/bin/VBoxClient --seamless
+1 S om        1687     1  0  80   0 - 12116 wait   06:32 ?        00:00:00 /usr/bin/VBoxClient --draganddrop
+1 S om        1688  1687  0  80   0 - 61688 futex_ 06:32 ?        00:00:29 /usr/bin/VBoxClient --draganddrop
+1 S om        1695     1  0  80   0 - 12116 wait   06:32 ?        00:00:00 /usr/bin/VBoxClient --vmsvga
+1 S om        1696  1695  0  80   0 - 46295 rtR0Se 06:32 ?        00:00:00 /usr/bin/VBoxClient --vmsvga
+1 S om        1705  1570  0  80   0 -  2828 -      06:32 ?        00:00:00 /usr/bin/ssh-agent /usr/bin/im-launch env GNOME_SHELL_SESSION_MO
+0 S om        1707  1543  0  80   0 - 87325 poll_s 06:32 ?        00:00:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+0 S om        1712  1707  0  80   0 - 12515 ep_pol 06:32 ?        00:00:00 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/a
+0 S om        1715  1543  0  80   0 - 55196 poll_s 06:32 ?        00:00:00 /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+0 S om        1733  1570  2  80   0 - 818712 poll_s 06:32 tty2    00:05:51 /usr/bin/gnome-shell
+0 S om        1739  1543  0  80   0 - 71216 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfsd
+0 S om        1744  1543  0  80   0 - 104029 futex_ 06:32 ?       00:00:00 /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
+1 S om        1755     1  0  80   0 - 399109 poll_s 06:32 ?       00:00:00 /usr/bin/pulseaudio --start --log-target=syslog
+0 S om        1766  1733  0  80   0 - 88679 poll_s 06:32 tty2     00:00:08 ibus-daemon --xim --panel disable
+0 S om        1770  1766  0  80   0 - 68412 poll_s 06:32 tty2     00:00:00 /usr/lib/ibus/ibus-dconf
+0 S om        1772     1  0  80   0 - 84208 poll_s 06:32 tty2     00:00:00 /usr/lib/ibus/ibus-x11 --kill-daemon
+0 S om        1775  1543  0  80   0 - 67896 poll_s 06:32 ?        00:00:00 /usr/lib/ibus/ibus-portal
+0 S om        1784  1543  0  80   0 - 66114 poll_s 06:32 ?        00:00:00 /usr/libexec/xdg-permission-store
+0 S om        1789  1543  0  80   0 - 172417 poll_s 06:32 ?       00:00:00 /usr/lib/gnome-shell/gnome-shell-calendar-server
+0 S om        1793  1543  0  80   0 - 242966 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-source-registry
+0 S om        1800  1543  0  80   0 - 214399 poll_s 06:32 ?       00:00:00 /usr/lib/gnome-online-accounts/goa-daemon
+0 S om        1812  1543  0  80   0 - 92497 poll_s 06:32 ?        00:00:00 /usr/lib/gnome-online-accounts/goa-identity-service
+0 S om        1824  1543  0  80   0 - 47010 poll_s 06:32 ?        00:00:00 /usr/lib/dconf/dconf-service
+0 S om        1827  1543  0  80   0 - 74834 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-udisks2-volume-monitor
+0 S om        1831  1543  0  80   0 - 66735 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-goa-volume-monitor
+0 S om        1835  1543  0  80   0 - 70389 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-gphoto2-volume-monitor
+0 S om        1839  1543  0  80   0 - 67191 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-mtp-volume-monitor
+0 S om        1843  1543  0  80   0 - 92931 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-afc-volume-monitor
+0 S om        1848  1570  0  80   0 - 198277 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-power
+0 S om        1849  1570  0  80   0 - 85556 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-print-notifications
+0 S om        1851  1570  0  80   0 - 104060 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-rfkill
+0 S om        1852  1570  0  80   0 - 67157 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-screensaver-proxy
+0 S om        1853  1570  0  80   0 - 111435 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-sharing
+0 S om        1857  1570  0  80   0 - 121842 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-xsettings
+0 S om        1863  1570  0  80   0 - 81968 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-sound
+0 S om        1866  1570  0  80   0 - 111174 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-smartcard
+0 S om        1869  1570  0  80   0 - 105283 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-wacom
+0 S om        1879  1570  0  80   0 - 67764 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-a11y-settings
+0 S om        1883  1570  0  80   0 - 84109 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-clipboard
+0 S om        1885  1570  0  80   0 - 197680 poll_s 06:32 tty2    00:00:01 /usr/lib/gnome-settings-daemon/gsd-color
+0 S om        1886  1570  0  80   0 - 115661 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-datetime
+0 S om        1893  1570  0  80   0 - 89336 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-housekeeping
+0 S om        1894  1570  0  80   0 - 124821 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-keyboard
+0 S om        1897  1570  0  80   0 - 196893 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-media-keys
+0 S om        1899  1570  0  80   0 - 67764 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-mouse
+0 S om        1938     1  0  80   0 - 125417 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-printer
+0 S om        1954  1570  0  80   0 - 67984 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-disk-utility/gsd-disk-utility-notify
+0 S om        1957  1570  0  80   0 - 260539 poll_s 06:32 tty2    00:00:04 nautilus-desktop
+0 S om        1992  1739  0  80   0 - 108719 poll_s 06:32 ?       00:00:00 /usr/lib/gvfs/gvfsd-trash --spawner :1.13 /org/gtk/gvfs/exec_spa
+0 S om        2013  1543  0  80   0 - 221395 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-calendar-factory
+0 S om        2020  2013  0  80   0 - 233170 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-calendar-factory-subprocess --facto
+0 S om        2031  1543  0  80   0 - 181403 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-addressbook-factory
+0 S om        2040  2031  0  80   0 - 219760 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-addressbook-factory-subprocess --fa
+0 S om        2059  1766  0  80   0 - 49446 poll_s 06:32 tty2     00:00:02 /usr/lib/ibus/ibus-engine-simple
+0 S om        2078  1543  0  80   0 - 49393 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfsd-metadata
+0 S om        2296  1570  0  80   0 - 165880 poll_s 06:33 tty2    00:00:00 update-notifier
+0 S om        2298  1570  0  80   0 - 268491 poll_s 06:33 tty2    00:00:03 /usr/bin/gnome-software --gapplication-service
+0 S om        2426     1  0  90  10 - 187245 poll_s 06:33 tty2    00:00:08 /usr/bin/python3 /usr/bin/update-manager --no-update --no-focus-
+0 S om        2581  1570  0  80   0 - 217772 poll_s 06:34 tty2    00:00:00 /usr/lib/deja-dup/deja-dup-monitor
+0 S om        4867  1543  0  80   0 - 106609 poll_s 07:04 ?       00:00:00 /usr/bin/zeitgeist-daemon
+0 S om        4873  1543  0  80   0 - 81687 poll_s 07:04 ?        00:00:00 /usr/lib/zeitgeist/zeitgeist/zeitgeist-fts
+4 S om        5624  1543  0  80   0 - 10675219 poll_s 07:23 ?     00:00:24 /usr/share/code/code .
+0 S om        5627  5624  0  80   0 - 85333 poll_s 07:23 ?        00:00:00 /usr/share/code/code --type=zygote --no-zygote-sandbox
+4 S om        5628  5624  0  80   0 - 85333 wait   07:23 ?        00:00:00 /usr/share/code/code --type=zygote
+1 S om        5630  5628  0  80   0 - 85333 poll_s 07:23 ?        00:00:00 /usr/share/code/code --type=zygote
+0 S om        5671  5624  0  80   0 - 100271 futex_ 07:23 ?       00:00:00 /usr/share/code/code --type=utility --utility-sub-type=network.m
+1 S om        5672  5627  0  80   0 - 128399 poll_s 07:23 ?       00:01:12 /usr/share/code/code --type=gpu-process --field-trial-handle=603
+1 S om        5678  5672  0  80   0 - 91567 skb_wa 07:23 ?        00:00:00 /usr/share/code/code --type=broker
+0 R om        5690  5624  2  80   0 - 14321758 -   07:23 ?        00:03:07 /usr/share/code/code --type=renderer --disable-color-correct-ren
+0 S om        5706  5624  0  80   0 - 10618877 futex_ 07:23 ?     00:00:09 /usr/share/code/code --type=renderer --disable-color-correct-ren
+0 S om        5722  5624  0  80   0 - 9552271 ep_pol 07:23 ?      00:00:22 /usr/share/code/code --ms-enable-electron-run-as-node --inspect-
+0 R om        5734  5706  0  80   0 - 9547465 -    07:23 ?        00:00:13 /usr/share/code/code --ms-enable-electron-run-as-node /usr/share
+0 S om        5756  5706  0  80   0 - 9550574 ep_pol 07:23 ?      00:00:04 /usr/share/code/code --ms-enable-electron-run-as-node /usr/share
+0 S om        5838  5734  0  80   0 -  5714 wait   07:26 pts/2    00:00:00 /bin/bash
+0 S om        6839  5722  0  80   0 - 184595 unix_s 07:39 ?       00:00:10 /home/om/.vscode/extensions/ms-vscode.cpptools-1.9.2/bin/cpptool
+4 S om        7093     1  0  80   0 - 4382886 poll_s 07:51 tty2   00:00:42 /opt/google/chrome/chrome --enable-crashpad
+0 S om        7098  7093  0  80   0 -  1903 pipe_w 07:51 tty2     00:00:00 cat
+0 S om        7099  7093  0  80   0 -  1903 pipe_w 07:51 tty2     00:00:00 cat
+0 S om        7101     1  0  80   0 - 4202611 ep_pol 07:51 ?      00:00:00 /opt/google/chrome/chrome_crashpad_handler --monitor-self --moni
+0 S om        7103     1  0  80   0 - 4200302 ep_pol 07:51 ?      00:00:00 /opt/google/chrome/chrome_crashpad_handler --no-periodic-tasks -
+0 S om        7109  7093  0  80   0 - 4298126 poll_s 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=zygote --no-zygote-sandbox --en
+4 S om        7110  7093  0  80   0 - 4298126 wait 07:51 tty2     00:00:00 /opt/google/chrome/chrome --type=zygote --enable-crashpad --cras
+4 S om        7111  7110  0  80   0 - 4221520 skb_wa 07:51 tty2   00:00:00 /opt/google/chrome/nacl_helper
+5 S om        7114  7110  0  80   0 - 4298126 poll_s 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=zygote --enable-crashpad --cras
+0 S om        7132  1543  0  80   0 - 110502 poll_s 07:51 ?       00:00:00 /usr/libexec/xdg-desktop-portal
+0 S om        7136  1543  0  80   0 - 105689 poll_s 07:51 ?       00:00:00 /usr/libexec/xdg-document-portal
+0 S om        7148  1543  0  80   0 - 138989 poll_s 07:51 ?       00:00:00 /usr/libexec/xdg-desktop-portal-gtk
+0 S om        7152  7093  0  80   0 - 4316636 futex_ 07:51 tty2   00:00:12 /opt/google/chrome/chrome --type=utility --utility-sub-type=netw
+1 S om        7156  7114  0  80   0 - 4308471 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=utility --utility-sub-type=stor
+1 S om        7277  7109  1  80   0 - 4329316 poll_s 07:51 tty2   00:02:16 /opt/google/chrome/chrome --type=gpu-process --enable-crashpad -
+1 S om        7424  7114  0  80   0 - 6422108 futex_ 07:51 tty2   00:00:04 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7448  7114  0  80   0 - 6419639 futex_ 07:51 tty2   00:00:04 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7459  7114  0  80   0 - 6419828 futex_ 07:51 tty2   00:00:02 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7469  7114  0  80   0 - 6423026 futex_ 07:51 tty2   00:00:11 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7480  7114  0  80   0 - 6416511 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7487  7114  0  80   0 - 6416511 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7502  7114  0  80   0 - 6416511 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7525  7114  0  80   0 - 6416511 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7537  7114  0  80   0 - 6416511 futex_ 07:52 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7548  7114  0  80   0 - 6416511 futex_ 07:52 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7559  7114  0  80   0 - 6416511 futex_ 07:52 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7569  7114  0  80   0 - 6418957 futex_ 07:52 tty2   00:00:01 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7580  7114 20  80   0 - 7479856 futex_ 07:52 tty2   00:25:06 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7592  7114  0  80   0 - 9573190 futex_ 07:52 tty2   00:00:03 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7856  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7907  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7912  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7922  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7926  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7961  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7968  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7994  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8005  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8023  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8034  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8045  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8051  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8070  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8081  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8082  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8114  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8125  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8324  7114  0  80   0 - 6416476 futex_ 08:03 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+0 S om        8367  1543  0  80   0 - 248177 poll_s 08:03 ?       00:00:02 /usr/bin/nautilus --gapplication-service
+0 S om        8778  5838  0  80   0 -  5562 poll_s 08:08 pts/2    00:00:00 script 09_03_2022.txt
+0 S om        8779  8778  0  80   0 -  5714 wait   08:08 pts/0    00:00:00 bash -i
+1 I root      9338     2  0  80   0 -     0 -      08:22 ?        00:00:02 [kworker/0:0-eve]
+0 S om       10624  1543  0  80   0 - 199596 poll_s 08:48 ?       00:00:02 /usr/lib/gnome-terminal/gnome-terminal-server
+0 S om       10634 10624  0  80   0 -  5711 poll_s 08:48 pts/1    00:00:00 bash
+1 I root     11778     2  0  80   0 -     0 -      09:17 ?        00:00:00 [kworker/u2:1-ev]
+1 I root     12761     2  0  80   0 -     0 -      09:46 ?        00:00:00 [kworker/0:1-mm_]
+0 S om       12877  6839  0  80   0 - 1205459 futex_ 09:49 ?      00:00:00 /home/om/.vscode/extensions/ms-vscode.cpptools-1.9.2/bin/cpptool
+1 I root     12939     2  0  80   0 -     0 -      09:50 ?        00:00:00 [kworker/u2:2-ev]
+4 S root     13496   497  0  80   0 -  6497 -      09:55 ?        00:00:00 /sbin/dhclient -d -q -sf /usr/lib/NetworkManager/nm-dhcp-helper 
+1 I root     13580     2  0  80   0 -     0 -      09:57 ?        00:00:00 [kworker/0:2]
+4 R om       13586  8779  0  80   0 -  9343 -      09:57 pts/0    00:00:00 ps -elf
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ps -elfgcc fork2.c [5Pps -elf./a.out
+my process pid is 13606
+my process pid is 13606
+my process ppid is 8779
+this is a parent process
+new child process pid is 13607
+new parent process ppid is 13606
+this is a child process
+^C
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outps -elf
+F S UID        PID  PPID  C PRI  NI ADDR SZ WCHAN  STIME TTY          TIME CMD
+4 S root         1     0  0  80   0 - 39987 -      06:13 ?        00:00:03 /sbin/init splash
+1 S root         2     0  0  80   0 -     0 -      06:13 ?        00:00:00 [kthreadd]
+1 I root         3     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [rcu_gp]
+1 I root         4     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [rcu_par_gp]
+1 I root         6     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kworker/0:0H-kb]
+1 I root         9     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [mm_percpu_wq]
+1 S root        10     2  0  80   0 -     0 -      06:13 ?        00:00:00 [ksoftirqd/0]
+1 I root        11     2  0  80   0 -     0 -      06:13 ?        00:00:04 [rcu_sched]
+1 S root        12     2  0 -40   - -     0 -      06:13 ?        00:00:00 [migration/0]
+5 S root        13     2  0   9   - -     0 -      06:13 ?        00:00:00 [idle_inject/0]
+1 S root        14     2  0  80   0 -     0 -      06:13 ?        00:00:00 [cpuhp/0]
+5 S root        15     2  0  80   0 -     0 -      06:13 ?        00:00:00 [kdevtmpfs]
+1 I root        16     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [netns]
+1 S root        17     2  0  80   0 -     0 -      06:13 ?        00:00:00 [rcu_tasks_kthre]
+1 S root        18     2  0  80   0 -     0 -      06:13 ?        00:00:00 [kauditd]
+1 S root        19     2  0  80   0 -     0 -      06:13 ?        00:00:00 [khungtaskd]
+1 S root        20     2  0  80   0 -     0 -      06:13 ?        00:00:00 [oom_reaper]
+1 I root        21     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [writeback]
+1 S root        22     2  0  80   0 -     0 -      06:13 ?        00:00:00 [kcompactd0]
+1 S root        23     2  0  85   5 -     0 -      06:13 ?        00:00:00 [ksmd]
+1 S root        24     2  0  99  19 -     0 -      06:13 ?        00:00:00 [khugepaged]
+1 I root        70     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kintegrityd]
+1 I root        71     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kblockd]
+1 I root        72     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [blkcg_punt_bio]
+1 I root        73     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [tpm_dev_wq]
+1 I root        74     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [ata_sff]
+1 I root        75     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [md]
+1 I root        76     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [edac-poller]
+1 I root        77     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [devfreq_wq]
+1 S root        78     2  0 -40   - -     0 -      06:13 ?        00:00:00 [watchdogd]
+1 S root        83     2  0  80   0 -     0 -      06:13 ?        00:00:00 [kswapd0]
+1 S root        84     2  0  80   0 -     0 -      06:13 ?        00:00:00 [ecryptfs-kthrea]
+1 I root        86     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kthrotld]
+1 I root        87     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [acpi_thermal_pm]
+1 S root        88     2  0  80   0 -     0 -      06:13 ?        00:00:00 [scsi_eh_0]
+1 I root        89     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [scsi_tmf_0]
+1 S root        90     2  0  80   0 -     0 -      06:13 ?        00:00:00 [scsi_eh_1]
+1 I root        91     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [scsi_tmf_1]
+1 I root        93     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [vfio-irqfd-clea]
+1 I root        95     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [ipv6_addrconf]
+1 I root       104     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kstrp]
+1 I root       107     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [kworker/u3:0]
+1 I root       120     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [charger_manager]
+1 I root       121     2  0  60 -20 -     0 -      06:13 ?        00:00:01 [kworker/0:1H-kb]
+1 S root       158     2  0  80   0 -     0 -      06:13 ?        00:00:00 [scsi_eh_2]
+1 I root       159     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [scsi_tmf_2]
+1 S root       182     2  0  80   0 -     0 -      06:13 ?        00:00:00 [jbd2/sda1-8]
+1 I root       183     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [ext4-rsv-conver]
+4 S root       220     1  0  79  -1 - 27929 -      06:13 ?        00:00:01 /lib/systemd/systemd-journald
+4 S root       238     1  0  80   0 - 11669 -      06:13 ?        00:00:00 /lib/systemd/systemd-udevd
+1 S root       259     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop0]
+1 S root       264     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop1]
+1 S root       267     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop2]
+1 S root       272     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop3]
+1 S root       277     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop4]
+1 S root       280     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop5]
+1 S root       282     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop6]
+1 S root       286     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop7]
+1 S root       290     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop8]
+1 S root       291     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop9]
+1 S root       294     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop10]
+1 S root       301     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop11]
+1 S root       304     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop12]
+1 S root       307     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop13]
+1 S root       318     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop14]
+1 S root       327     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop15]
+1 S root       335     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop16]
+1 S root       344     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [loop17]
+4 S systemd+   362     1  0  80   0 - 17723 -      06:13 ?        00:00:01 /lib/systemd/systemd-resolved
+1 I root       459     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [iprt-VBoxWQueue]
+4 S root       467     1  0  80   0 - 25148 -      06:13 ?        00:00:00 /usr/sbin/cupsd -l
+4 S root       468     1  0  80   0 - 108582 -     06:13 ?        00:00:00 /usr/sbin/ModemManager --filter-policy=strict
+4 S syslog     473     1  0  80   0 - 65760 -      06:13 ?        00:00:00 /usr/sbin/rsyslogd -n
+4 S root       480     1  0  80   0 -  1139 -      06:13 ?        00:00:00 /usr/sbin/acpid
+4 S root       484     1  0  80   0 - 42633 -      06:13 ?        00:00:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-trig
+4 S message+   485     1  0  80   0 - 12950 -      06:13 ?        00:00:03 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopi
+4 S root       497     1  0  80   0 - 140193 -     06:13 ?        00:00:02 /usr/sbin/NetworkManager --no-daemon
+4 S lp         500   467  0  80   0 - 21607 -      06:13 ?        00:00:00 /usr/lib/cups/notifier/dbus dbus://
+4 S root       510     1  0  80   0 -  7831 -      06:13 ?        00:00:00 /usr/sbin/cron -f
+4 S avahi      511     1  0  80   0 - 11815 -      06:13 ?        00:00:00 avahi-daemon: running [om-VirtualBox.local]
+4 S root       514     1  0  80   0 - 11309 -      06:13 ?        00:00:00 /sbin/wpa_supplicant -u -s -O /run/wpa_supplicant
+4 S root       517     1  0  80   0 - 71908 -      06:13 ?        00:00:00 /usr/lib/accountsservice/accounts-daemon
+1 S avahi      518   511  0  80   0 - 11770 -      06:13 ?        00:00:00 avahi-daemon: chroot helper
+4 S root       521     1  0  80   0 - 17647 -      06:13 ?        00:00:00 /lib/systemd/systemd-logind
+4 S root       522     1  0  80   0 - 125851 -     06:13 ?        00:00:00 /usr/lib/udisks2/udisksd
+4 S root       528     1  0  80   0 - 187123 -     06:13 ?        00:00:01 /usr/lib/snapd/snapd
+4 S root       550     1  0  80   0 - 75917 -      06:13 ?        00:00:00 /usr/sbin/cups-browsed
+4 S root       552     1  0  80   0 - 74087 -      06:13 ?        00:00:00 /usr/lib/policykit-1/polkitd --no-debug
+4 S root       564     1  0  80   0 - 46808 -      06:13 ?        00:00:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgra
+1 S root       609     1  0  80   0 - 21118 -      06:13 ?        00:00:00 /usr/sbin/apache2 -k start
+5 S www-data   611   609  0  80   0 - 208669 -     06:13 ?        00:00:00 /usr/sbin/apache2 -k start
+5 S www-data   612   609  0  80   0 - 208669 -     06:13 ?        00:00:00 /usr/sbin/apache2 -k start
+4 S whoopsie   692     1  0  80   0 - 134515 -     06:13 ?        00:00:00 /usr/bin/whoopsie -f
+1 S kernoops   694     1  0  80   0 - 14236 -      06:13 ?        00:00:00 /usr/sbin/kerneloops --test
+1 S kernoops   706     1  0  80   0 - 14236 -      06:13 ?        00:00:00 /usr/sbin/kerneloops
+1 I root       734     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [cryptd]
+1 S root       737     2  0   9   - -     0 -      06:13 ?        00:00:01 [irq/18-vmwgfx]
+1 I root       738     2  0  60 -20 -     0 -      06:13 ?        00:00:00 [ttm_swap]
+4 S root      1053     1  0  80   0 - 75271 -      06:13 ?        00:00:00 /usr/sbin/gdm3
+1 S root      1063     1  0  80   0 - 94615 -      06:13 ?        00:00:02 /usr/sbin/VBoxService --pidfile /var/run/vboxadd-service.sh
+4 S root      1072  1053  0  80   0 - 63612 -      06:13 ?        00:00:00 gdm-session-worker [pam/gdm-launch-environment]
+4 S gdm       1081     1  0  80   0 - 19225 -      06:13 ?        00:00:00 /lib/systemd/systemd --user
+5 S gdm       1082  1081  0  80   0 - 28523 -      06:13 ?        00:00:00 (sd-pam)
+4 S gdm       1093  1072  0  80   0 - 47673 -      06:13 tty1     00:00:00 /usr/lib/gdm3/gdm-wayland-session gnome-session --autostart /usr
+0 S gdm       1095  1081  0  80   0 - 12558 -      06:13 ?        00:00:00 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nop
+0 S gdm       1097  1093  0  80   0 - 137929 -     06:13 tty1     00:00:00 /usr/lib/gnome-session/gnome-session-binary --autostart /usr/sha
+0 S gdm       1103  1097  0  80   0 - 735947 -     06:13 tty1     00:00:17 /usr/bin/gnome-shell
+4 S root      1110     1  0  80   0 - 78822 -      06:13 ?        00:00:00 /usr/lib/upower/upowerd
+0 S gdm       1118  1103  0  80   0 - 56895 -      06:13 tty1     00:00:00 /usr/bin/Xwayland :1024 -rootless -terminate -accessx -core -lis
+0 S gdm       1121  1081  0  80   0 - 87352 -      06:13 ?        00:00:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+0 S gdm       1126  1121  0  80   0 - 12483 -      06:13 ?        00:00:00 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/a
+0 S gdm       1128  1081  0  80   0 - 55192 -      06:13 ?        00:00:00 /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+0 S gdm       1131  1081  0  80   0 - 394926 -     06:13 ?        00:00:00 /usr/bin/pulseaudio --daemonize=no
+4 S rtkit     1133     1  0  81   1 - 45878 -      06:13 ?        00:00:00 /usr/lib/rtkit/rtkit-daemon
+0 S gdm       1145  1103  0  80   0 - 106998 -     06:13 tty1     00:00:00 ibus-daemon --xim --panel disable
+0 S gdm       1148  1145  0  80   0 - 68410 -      06:13 tty1     00:00:00 /usr/lib/ibus/ibus-dconf
+0 S gdm       1151     1  0  80   0 - 122357 -     06:13 tty1     00:00:00 /usr/lib/ibus/ibus-x11 --kill-daemon
+0 S gdm       1155  1081  0  80   0 - 67896 -      06:13 ?        00:00:00 /usr/lib/ibus/ibus-portal
+0 S gdm       1162  1081  0  80   0 - 66114 -      06:13 ?        00:00:00 /usr/libexec/xdg-permission-store
+4 S root      1169     1  0  80   0 - 72442 -      06:13 ?        00:00:00 /usr/lib/x86_64-linux-gnu/boltd
+4 S root      1177     1  0  80   0 - 128670 -     06:13 ?        00:00:10 /usr/lib/packagekit/packagekitd
+0 S gdm       1180  1097  0  80   0 - 121864 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-xsettings
+0 S gdm       1184  1097  0  80   0 - 67763 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-a11y-settings
+0 S gdm       1186  1097  0  80   0 - 84145 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-clipboard
+0 S gdm       1189  1097  0  80   0 - 181328 -     06:13 tty1     00:00:01 /usr/lib/gnome-settings-daemon/gsd-color
+0 S gdm       1190  1097  0  80   0 - 96653 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-datetime
+0 S gdm       1191  1097  0  80   0 - 69158 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-housekeeping
+0 S gdm       1192  1097  0  80   0 - 124866 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-keyboard
+0 S gdm       1193  1097  0  80   0 - 215443 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-media-keys
+0 S gdm       1196  1097  0  80   0 - 48723 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-mouse
+0 S gdm       1199  1097  0  80   0 - 216760 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-power
+0 S gdm       1202  1097  0  80   0 - 64979 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-print-notifications
+0 S gdm       1207  1097  0  80   0 - 48728 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-rfkill
+0 S gdm       1208  1097  0  80   0 - 67157 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-screensaver-proxy
+0 S gdm       1211  1097  0  80   0 - 74503 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-sharing
+0 S gdm       1214  1097  0  80   0 - 92740 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-smartcard
+0 S gdm       1220  1097  0  80   0 - 81967 -      06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-sound
+0 S gdm       1228  1097  0  80   0 - 105360 -     06:13 tty1     00:00:00 /usr/lib/gnome-settings-daemon/gsd-wacom
+4 S colord    1244     1  0  80   0 - 79438 -      06:13 ?        00:00:00 /usr/lib/colord/colord
+0 S gdm       1271  1145  0  80   0 - 49446 -      06:13 tty1     00:00:00 /usr/lib/ibus/ibus-engine-simple
+4 S root      1539  1053  0  80   0 - 102058 -     06:32 ?        00:00:00 gdm-session-worker [pam/gdm-password]
+4 S om        1543     1  0  80   0 - 19252 ep_pol 06:32 ?        00:00:00 /lib/systemd/systemd --user
+5 S om        1544  1543  0  80   0 - 49005 -      06:32 ?        00:00:00 (sd-pam)
+1 S om        1557     1  0  80   0 - 70319 -      06:32 ?        00:00:00 /usr/bin/gnome-keyring-daemon --daemonize --login
+4 S om        1561  1539  0  80   0 - 51257 poll_s 06:32 tty2     00:00:00 /usr/lib/gdm3/gdm-x-session --run-script env GNOME_SHELL_SESSION
+4 S om        1563  1561  0  80   0 - 141914 ep_pol 06:32 tty2    00:01:29 /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xau
+0 S om        1566  1543  0  80   0 - 13015 ep_pol 06:32 ?        00:00:01 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nop
+0 S om        1570  1561  0  80   0 - 158542 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-session/gnome-session-binary --session=ubuntu
+1 S om        1669     1  0  80   0 - 12116 wait   06:32 ?        00:00:00 /usr/bin/VBoxClient --clipboard
+1 S om        1670  1669  0  80   0 - 45693 rtR0Se 06:32 ?        00:00:00 /usr/bin/VBoxClient --clipboard
+1 S om        1680     1  0  80   0 - 12116 wait   06:32 ?        00:00:00 /usr/bin/VBoxClient --seamless
+1 S om        1681  1680  0  80   0 - 45175 rtR0Se 06:32 ?        00:00:00 /usr/bin/VBoxClient --seamless
+1 S om        1687     1  0  80   0 - 12116 wait   06:32 ?        00:00:00 /usr/bin/VBoxClient --draganddrop
+1 S om        1688  1687  0  80   0 - 61688 futex_ 06:32 ?        00:00:30 /usr/bin/VBoxClient --draganddrop
+1 S om        1695     1  0  80   0 - 12116 wait   06:32 ?        00:00:00 /usr/bin/VBoxClient --vmsvga
+1 S om        1696  1695  0  80   0 - 46295 rtR0Se 06:32 ?        00:00:00 /usr/bin/VBoxClient --vmsvga
+1 S om        1705  1570  0  80   0 -  2828 -      06:32 ?        00:00:00 /usr/bin/ssh-agent /usr/bin/im-launch env GNOME_SHELL_SESSION_MO
+0 S om        1707  1543  0  80   0 - 87325 poll_s 06:32 ?        00:00:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+0 S om        1712  1707  0  80   0 - 12515 ep_pol 06:32 ?        00:00:00 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/a
+0 S om        1715  1543  0  80   0 - 55196 poll_s 06:32 ?        00:00:00 /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+0 S om        1733  1570  2  80   0 - 818712 poll_s 06:32 tty2    00:05:54 /usr/bin/gnome-shell
+0 S om        1739  1543  0  80   0 - 71216 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfsd
+0 S om        1744  1543  0  80   0 - 104029 futex_ 06:32 ?       00:00:00 /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
+1 S om        1755     1  0  80   0 - 399109 poll_s 06:32 ?       00:00:00 /usr/bin/pulseaudio --start --log-target=syslog
+0 S om        1766  1733  0  80   0 - 88679 poll_s 06:32 tty2     00:00:08 ibus-daemon --xim --panel disable
+0 S om        1770  1766  0  80   0 - 68412 poll_s 06:32 tty2     00:00:00 /usr/lib/ibus/ibus-dconf
+0 S om        1772     1  0  80   0 - 84208 poll_s 06:32 tty2     00:00:00 /usr/lib/ibus/ibus-x11 --kill-daemon
+0 S om        1775  1543  0  80   0 - 67896 poll_s 06:32 ?        00:00:00 /usr/lib/ibus/ibus-portal
+0 S om        1784  1543  0  80   0 - 66114 poll_s 06:32 ?        00:00:00 /usr/libexec/xdg-permission-store
+0 S om        1789  1543  0  80   0 - 172417 poll_s 06:32 ?       00:00:00 /usr/lib/gnome-shell/gnome-shell-calendar-server
+0 S om        1793  1543  0  80   0 - 242966 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-source-registry
+0 S om        1800  1543  0  80   0 - 214399 poll_s 06:32 ?       00:00:00 /usr/lib/gnome-online-accounts/goa-daemon
+0 S om        1812  1543  0  80   0 - 92497 poll_s 06:32 ?        00:00:00 /usr/lib/gnome-online-accounts/goa-identity-service
+0 S om        1824  1543  0  80   0 - 47010 poll_s 06:32 ?        00:00:00 /usr/lib/dconf/dconf-service
+0 S om        1827  1543  0  80   0 - 74834 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-udisks2-volume-monitor
+0 S om        1831  1543  0  80   0 - 66735 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-goa-volume-monitor
+0 S om        1835  1543  0  80   0 - 70389 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-gphoto2-volume-monitor
+0 S om        1839  1543  0  80   0 - 67191 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-mtp-volume-monitor
+0 S om        1843  1543  0  80   0 - 92931 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfs-afc-volume-monitor
+0 S om        1848  1570  0  80   0 - 198277 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-power
+0 S om        1849  1570  0  80   0 - 85556 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-print-notifications
+0 S om        1851  1570  0  80   0 - 104060 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-rfkill
+0 S om        1852  1570  0  80   0 - 67157 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-screensaver-proxy
+0 S om        1853  1570  0  80   0 - 111435 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-sharing
+0 S om        1857  1570  0  80   0 - 121842 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-xsettings
+0 S om        1863  1570  0  80   0 - 81968 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-sound
+0 S om        1866  1570  0  80   0 - 111174 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-smartcard
+0 S om        1869  1570  0  80   0 - 105283 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-wacom
+0 S om        1879  1570  0  80   0 - 67764 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-a11y-settings
+0 S om        1883  1570  0  80   0 - 84109 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-clipboard
+0 S om        1885  1570  0  80   0 - 197680 poll_s 06:32 tty2    00:00:01 /usr/lib/gnome-settings-daemon/gsd-color
+0 S om        1886  1570  0  80   0 - 115661 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-datetime
+0 S om        1893  1570  0  80   0 - 89336 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-housekeeping
+0 S om        1894  1570  0  80   0 - 124821 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-keyboard
+0 S om        1897  1570  0  80   0 - 196893 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-media-keys
+0 S om        1899  1570  0  80   0 - 67764 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-settings-daemon/gsd-mouse
+0 S om        1938     1  0  80   0 - 125417 poll_s 06:32 tty2    00:00:00 /usr/lib/gnome-settings-daemon/gsd-printer
+0 S om        1954  1570  0  80   0 - 67984 poll_s 06:32 tty2     00:00:00 /usr/lib/gnome-disk-utility/gsd-disk-utility-notify
+0 S om        1957  1570  0  80   0 - 260539 poll_s 06:32 tty2    00:00:04 nautilus-desktop
+0 S om        1992  1739  0  80   0 - 108719 poll_s 06:32 ?       00:00:00 /usr/lib/gvfs/gvfsd-trash --spawner :1.13 /org/gtk/gvfs/exec_spa
+0 S om        2013  1543  0  80   0 - 221395 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-calendar-factory
+0 S om        2020  2013  0  80   0 - 233170 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-calendar-factory-subprocess --facto
+0 S om        2031  1543  0  80   0 - 181403 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-addressbook-factory
+0 S om        2040  2031  0  80   0 - 219760 poll_s 06:32 ?       00:00:00 /usr/lib/evolution/evolution-addressbook-factory-subprocess --fa
+0 S om        2059  1766  0  80   0 - 49446 poll_s 06:32 tty2     00:00:02 /usr/lib/ibus/ibus-engine-simple
+0 S om        2078  1543  0  80   0 - 49393 poll_s 06:32 ?        00:00:00 /usr/lib/gvfs/gvfsd-metadata
+0 S om        2296  1570  0  80   0 - 165880 poll_s 06:33 tty2    00:00:00 update-notifier
+0 S om        2298  1570  0  80   0 - 268491 poll_s 06:33 tty2    00:00:03 /usr/bin/gnome-software --gapplication-service
+0 S om        2426     1  0  90  10 - 187245 poll_s 06:33 tty2    00:00:08 /usr/bin/python3 /usr/bin/update-manager --no-update --no-focus-
+0 S om        2581  1570  0  80   0 - 217772 poll_s 06:34 tty2    00:00:00 /usr/lib/deja-dup/deja-dup-monitor
+0 S om        4867  1543  0  80   0 - 106609 poll_s 07:04 ?       00:00:00 /usr/bin/zeitgeist-daemon
+0 S om        4873  1543  0  80   0 - 81687 poll_s 07:04 ?        00:00:00 /usr/lib/zeitgeist/zeitgeist/zeitgeist-fts
+4 S om        5624  1543  0  80   0 - 10675603 poll_s 07:23 ?     00:00:25 /usr/share/code/code .
+0 S om        5627  5624  0  80   0 - 85333 poll_s 07:23 ?        00:00:00 /usr/share/code/code --type=zygote --no-zygote-sandbox
+4 S om        5628  5624  0  80   0 - 85333 wait   07:23 ?        00:00:00 /usr/share/code/code --type=zygote
+1 S om        5630  5628  0  80   0 - 85333 poll_s 07:23 ?        00:00:00 /usr/share/code/code --type=zygote
+0 S om        5671  5624  0  80   0 - 100271 futex_ 07:23 ?       00:00:00 /usr/share/code/code --type=utility --utility-sub-type=network.m
+1 S om        5672  5627  0  80   0 - 128931 poll_s 07:23 ?       00:01:13 /usr/share/code/code --type=gpu-process --field-trial-handle=603
+1 S om        5678  5672  0  80   0 - 91567 skb_wa 07:23 ?        00:00:00 /usr/share/code/code --type=broker
+0 R om        5690  5624  1  80   0 - 14321906 -   07:23 ?        00:03:11 /usr/share/code/code --type=renderer --disable-color-correct-ren
+0 S om        5706  5624  0  80   0 - 10618877 futex_ 07:23 ?     00:00:09 /usr/share/code/code --type=renderer --disable-color-correct-ren
+0 S om        5722  5624  0  80   0 - 9552271 ep_pol 07:23 ?      00:00:22 /usr/share/code/code --ms-enable-electron-run-as-node --inspect-
+0 R om        5734  5706  0  80   0 - 9547465 -    07:23 ?        00:00:14 /usr/share/code/code --ms-enable-electron-run-as-node /usr/share
+0 S om        5756  5706  0  80   0 - 9550574 ep_pol 07:23 ?      00:00:04 /usr/share/code/code --ms-enable-electron-run-as-node /usr/share
+0 S om        5838  5734  0  80   0 -  5714 wait   07:26 pts/2    00:00:00 /bin/bash
+0 S om        6839  5722  0  80   0 - 184595 unix_s 07:39 ?       00:00:10 /home/om/.vscode/extensions/ms-vscode.cpptools-1.9.2/bin/cpptool
+4 S om        7093     1  0  80   0 - 4382886 poll_s 07:51 tty2   00:00:43 /opt/google/chrome/chrome --enable-crashpad
+0 S om        7098  7093  0  80   0 -  1903 pipe_w 07:51 tty2     00:00:00 cat
+0 S om        7099  7093  0  80   0 -  1903 pipe_w 07:51 tty2     00:00:00 cat
+0 S om        7101     1  0  80   0 - 4202611 ep_pol 07:51 ?      00:00:00 /opt/google/chrome/chrome_crashpad_handler --monitor-self --moni
+0 S om        7103     1  0  80   0 - 4200302 ep_pol 07:51 ?      00:00:00 /opt/google/chrome/chrome_crashpad_handler --no-periodic-tasks -
+0 S om        7109  7093  0  80   0 - 4298126 poll_s 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=zygote --no-zygote-sandbox --en
+4 S om        7110  7093  0  80   0 - 4298126 wait 07:51 tty2     00:00:00 /opt/google/chrome/chrome --type=zygote --enable-crashpad --cras
+4 S om        7111  7110  0  80   0 - 4221520 skb_wa 07:51 tty2   00:00:00 /opt/google/chrome/nacl_helper
+5 S om        7114  7110  0  80   0 - 4298126 poll_s 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=zygote --enable-crashpad --cras
+0 S om        7132  1543  0  80   0 - 110502 poll_s 07:51 ?       00:00:00 /usr/libexec/xdg-desktop-portal
+0 S om        7136  1543  0  80   0 - 105689 poll_s 07:51 ?       00:00:00 /usr/libexec/xdg-document-portal
+0 S om        7148  1543  0  80   0 - 138989 poll_s 07:51 ?       00:00:00 /usr/libexec/xdg-desktop-portal-gtk
+0 S om        7152  7093  0  80   0 - 4316636 futex_ 07:51 tty2   00:00:12 /opt/google/chrome/chrome --type=utility --utility-sub-type=netw
+1 S om        7156  7114  0  80   0 - 4308471 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=utility --utility-sub-type=stor
+1 S om        7277  7109  1  80   0 - 4329316 poll_s 07:51 tty2   00:02:22 /opt/google/chrome/chrome --type=gpu-process --enable-crashpad -
+1 S om        7424  7114  0  80   0 - 6422108 futex_ 07:51 tty2   00:00:04 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7448  7114  0  80   0 - 6419639 futex_ 07:51 tty2   00:00:04 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7459  7114  0  80   0 - 6419828 futex_ 07:51 tty2   00:00:02 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7469  7114  0  80   0 - 6423026 futex_ 07:51 tty2   00:00:11 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7480  7114  0  80   0 - 6416511 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7487  7114  0  80   0 - 6416511 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7502  7114  0  80   0 - 6416511 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7525  7114  0  80   0 - 6416511 futex_ 07:51 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7537  7114  0  80   0 - 6416511 futex_ 07:52 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7548  7114  0  80   0 - 6416511 futex_ 07:52 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7559  7114  0  80   0 - 6416511 futex_ 07:52 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7569  7114  0  80   0 - 6418957 futex_ 07:52 tty2   00:00:01 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7580  7114 19  80   0 - 7479856 futex_ 07:52 tty2   00:26:11 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7592  7114  0  80   0 - 9573190 futex_ 07:52 tty2   00:00:03 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7856  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7907  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7912  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7922  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7926  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7961  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7968  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        7994  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8005  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8023  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8034  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8045  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8051  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8070  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8081  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8082  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8114  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8125  7114  0  80   0 - 6416511 futex_ 08:00 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+1 S om        8324  7114  0  80   0 - 6416476 futex_ 08:03 tty2   00:00:00 /opt/google/chrome/chrome --type=renderer --enable-crashpad --cr
+0 S om        8367  1543  0  80   0 - 248177 poll_s 08:03 ?       00:00:02 /usr/bin/nautilus --gapplication-service
+0 S om        8778  5838  0  80   0 -  5562 poll_s 08:08 pts/2    00:00:00 script 09_03_2022.txt
+0 S om        8779  8778  0  80   0 -  5714 wait   08:08 pts/0    00:00:00 bash -i
+1 I root      9338     2  0  80   0 -     0 -      08:22 ?        00:00:02 [kworker/0:0-eve]
+0 S om       10624  1543  0  80   0 - 199596 poll_s 08:48 ?       00:00:02 /usr/lib/gnome-terminal/gnome-terminal-server
+0 S om       10634 10624  0  80   0 -  5711 poll_s 08:48 pts/1    00:00:00 bash
+1 I root     11778     2  0  80   0 -     0 -      09:17 ?        00:00:00 [kworker/u2:1-ev]
+0 S om       12877  6839  0  80   0 - 1205459 futex_ 09:49 ?      00:00:00 /home/om/.vscode/extensions/ms-vscode.cpptools-1.9.2/bin/cpptool
+1 I root     12939     2  0  80   0 -     0 -      09:50 ?        00:00:00 [kworker/u2:2-ev]
+1 I root     13580     2  0  80   0 -     0 -      09:57 ?        00:00:00 [kworker/0:2-eve]
+4 S root     13790   497  0  80   0 -  6497 -      10:01 ?        00:00:00 /sbin/dhclient -d -q -sf /usr/lib/NetworkManager/nm-dhcp-helper 
+4 S root     13811     1  0  80   0 -  1869 -      10:03 ?        00:00:00 /usr/sbin/anacron -dsq
+4 R om       13841  8779  0  80   0 -  9343 -      10:03 pts/0    00:00:00 ps -elf
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ps -elf./a.outps -elfgcc fork2.c 
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc fork2.c [5Pps -elf./a.out
+my process pid is 13848
+new child process pid is 13849
+new parent process ppid is 13848
+^C
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outgcc fork2.c 
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc fork2.c [5P./a.out
+my process pid is 13947
+my process pid is 13947
+my process ppid is 8779
+new child process pid is 13948
+new parent process ppid is 13947
+^C
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outgcc fork2.c [C[1P[1@m[1@u[1@l[12@tiple_fork.c[1P[1P[1P[1P[1P[1P [K
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc multiple_fork.c[12P./a.out
+my process pid is 14990
+my process pid is 14990
+my process ppid is 8779
+new child process pid is 14991
+new parent process ppid is 14990
+^C
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ [K]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ [K]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outgcc multiple_fork.c[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kexecl.c 
+[01m[Kexecl.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Kexecl.c:6:5:[m[K [01;35m[Kwarning: [m[Kmissing sentinel in function call [[01;35m[K-Wformat=[m[K]
+     [01;35m[Kexecl[m[K("/bin/ls","ls","-lh",0);
+     [01;35m[K^~~~~[m[K
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc execl.c 
+[01m[Kexecl.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Kexecl.c:6:5:[m[K [01;35m[Kwarning: [m[Kmissing sentinel in function call [[01;35m[K-Wformat=[m[K]
+     [01;35m[Kexecl[m[K("/bin/ls","ls","-lh",0);
+     [01;35m[K^~~~~[m[K
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc execl.c [5P./a.out
+i am going to execute a ls programe
+total 220K
+-rw-rw-r-- 1 om om 176K Mar  9 10:36 09_03_2022.txt
+-rwxrwxr-x 1 om om 8.2K Mar  9 10:36 a.out
+-rw-rw-r-- 1 om om  432 Mar  9 08:23 dup1.c
+-rw-rw-r-- 1 om om  435 Mar  9 08:24 dup2.c
+-rw-rw-r-- 1 om om  187 Mar  9 10:36 execl.c
+-rw-rw-r-- 1 om om  346 Mar  9 08:32 fcntl.c
+-rw-rw-r-- 1 om om  729 Mar  9 10:04 fork2.c
+-rw-rw-r-- 1 om om  211 Mar  9 09:44 fork.c
+-rw-rw-r-- 1 om om  234 Mar  9 09:49 getpid.c
+-rwxrwxr-x 1 om om    0 Mar  9 08:24 linux1.txt
+-rwxrwxr-x 1 om om    0 Mar  9 08:32 linux.txt
+-rw-rw-r-- 1 om om  493 Mar  9 10:30 multiple_fork.c
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outgcc execl.c 
+[01m[Kexecl.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Kexecl.c:6:5:[m[K [01;35m[Kwarning: [m[Kmissing sentinel in function call [[01;35m[K-Wformat=[m[K]
+     [01;35m[Kexecl[m[K("/bin/cd","cd","cd -",0);
+     [01;35m[K^~~~~[m[K
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc execl.c [5P./a.out
+i am going to execute a ls programe
+this is linux kernal
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outgcc execl.c 
+[01m[Kexecl.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Kexecl.c:6:5:[m[K [01;35m[Kwarning: [m[Kmissing sentinel in function call [[01;35m[K-Wformat=[m[K]
+     [01;35m[Kexecl[m[K("/bin/ls","ls","-lh",0);
+     [01;35m[K^~~~~[m[K
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc execl.c [5P./a.out
+i am going to execute a ls programe
+total 220K
+-rw-rw-r-- 1 om om 176K Mar  9 10:36 09_03_2022.txt
+-rwxrwxr-x 1 om om 8.2K Mar  9 10:38 a.out
+-rw-rw-r-- 1 om om  432 Mar  9 08:23 dup1.c
+-rw-rw-r-- 1 om om  435 Mar  9 08:24 dup2.c
+-rw-rw-r-- 1 om om  187 Mar  9 10:38 execl.c
+-rw-rw-r-- 1 om om  346 Mar  9 08:32 fcntl.c
+-rw-rw-r-- 1 om om  729 Mar  9 10:04 fork2.c
+-rw-rw-r-- 1 om om  211 Mar  9 09:44 fork.c
+-rw-rw-r-- 1 om om  234 Mar  9 09:49 getpid.c
+-rwxrwxr-x 1 om om    0 Mar  9 08:24 linux1.txt
+-rwxrwxr-x 1 om om    0 Mar  9 08:32 linux.txt
+-rw-rw-r-- 1 om om  493 Mar  9 10:30 multiple_fork.c
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ pwd
+/home/om/om/linux_internals/09_03_2022
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ pwd./a.out
+i am going to execute a ls programe
+total 220K
+-rw-rw-r-- 1 om om 176K Mar  9 10:36 09_03_2022.txt
+-rwxrwxr-x 1 om om 8.2K Mar  9 10:38 a.out
+-rw-rw-r-- 1 om om  432 Mar  9 08:23 dup1.c
+-rw-rw-r-- 1 om om  435 Mar  9 08:24 dup2.c
+-rw-rw-r-- 1 om om  222 Mar  9 10:40 execl.c
+-rw-rw-r-- 1 om om  346 Mar  9 08:32 fcntl.c
+-rw-rw-r-- 1 om om  729 Mar  9 10:04 fork2.c
+-rw-rw-r-- 1 om om  211 Mar  9 09:44 fork.c
+-rw-rw-r-- 1 om om  234 Mar  9 09:49 getpid.c
+-rwxrwxr-x 1 om om    0 Mar  9 08:24 linux1.txt
+-rwxrwxr-x 1 om om    0 Mar  9 08:32 linux.txt
+-rw-rw-r-- 1 om om  493 Mar  9 10:30 multiple_fork.c
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.out[4Ppwd./a.outgcc execl.c 
+[01m[Kexecl.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Kexecl.c:6:5:[m[K [01;35m[Kwarning: [m[Kmissing sentinel in function call [[01;35m[K-Wformat=[m[K]
+     [01;35m[Kexecl[m[K("/home/om/om/linux_internals/09_03_2022","dup1.c","-lh",0);
+     [01;35m[K^~~~~[m[K
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc execl.c [5P./a.out
+i am going to execute a ls programe
+this is linux kernal
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outgcc execl.c 
+[01m[Kexecl.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Kexecl.c:6:5:[m[K [01;35m[Kwarning: [m[Kmissing sentinel in function call [[01;35m[K-Wformat=[m[K]
+     [01;35m[Kexecl[m[K("/home/om/om/linux_internals/09_03_2022","ls","dup1.c",0);
+     [01;35m[K^~~~~[m[K
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc execl.c [5P./a.out
+i am going to execute a ls programe
+this is linux kernal
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outgcc execl.c 
+[01m[Kexecl.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Kexecl.c:6:5:[m[K [01;35m[Kwarning: [m[Kmissing sentinel in function call [[01;35m[K-Wformat=[m[K]
+     [01;35m[Kexecl[m[K("/home/om/om/linux_internals/09_03_2022","ls -l","dup1.c",0);
+     [01;35m[K^~~~~[m[K
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc execl.c [5P./a.out
+i am going to execute a ls programe
+this is linux kernal
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outgcc execl.c 
+[01m[Kexecl.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Kexecl.c:6:5:[m[K [01;35m[Kwarning: [m[Kmissing sentinel in function call [[01;35m[K-Wformat=[m[K]
+     [01;35m[Kexecl[m[K("/home/om/om/linux_internals/09_03_2022","gedit","dup1.c",0);
+     [01;35m[K^~~~~[m[K
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc execl.c [5P./a.out
+i am going to execute a ls programe
+this is linux kernal
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outgcc execl.c 
+[01m[Kexecl.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Kexecl.c:6:5:[m[K [01;35m[Kwarning: [m[Kmissing sentinel in function call [[01;35m[K-Wformat=[m[K]
+     [01;35m[Kexecl[m[K("/home/om/om/linux_internals/09_03_2022","vi","linux.txt",0);
+     [01;35m[K^~~~~[m[K
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc execl.c [5P./a.out
+i am going to execute a ls programe
+this is linux kernal
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ ./a.outgcc execl.c 
+[01m[Kexecl.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Kexecl.c:6:5:[m[K [01;35m[Kwarning: [m[Kmissing sentinel in function call [[01;35m[K-Wformat=[m[K]
+     [01;35m[Kexecl[m[K("/usr/bin/vi","vi","linux.txt",0);
+     [01;35m[K^~~~~[m[K
+]0;om@om-VirtualBox: ~/om/linux_internals/09_03_2022[01;32mom@om-VirtualBox[00m:[01;34m~/om/linux_internals/09_03_2022[00m$ gcc execl.c [5P./a.out
+i am going to execute a ls programe
+[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;15r[?12h[?12l[27m[23m[29m[m[H[2J[?25l[15;1H"linux.txt" 0L, 0C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[2;1H[94m~                                                                                                                                          [3;1H~                                                                                                                                          [4;1H~                                                                                                                                          [5;1H~                                                                                                                                          [6;1H~                                                                                                                                          [7;1H~                                                                                                                                          [8;1H~                                                                                                                                          [9;1H~                                                                                                                                          [10;1H~                                                                                                                                          [11;1H~                                                                                                                                          [12;1H~                                                                                                                                          [13;1H~                                                                                                                                          [14;1H~                                                                                                                                          [m[15;122H0,0-1[9CAll[1;1H[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?12$p[27m[23m[29m[m[H[2J[?25l[2;1H[94m~                                                                                                                                          [3;1H~                                                                                                                                          [4;1H~                                                                                                                                          [5;1H~                                                                                                                                          [6;1H~                                                                                                                                          [7;1H~                                                                                                                                          [8;1H~                                                                                                                                          [9;1H~                                                                                                                                          [10;1H~                                                                                                                                          [11;1H~                                                                                                                                          [12;1H~                                                                                                                                          [13;1H~                                                                                                                                          [14;1H~                                                                                                                                          [m[15;122H0,0-1[9CAll"linux.txt" 0L, 0C[1;1H[?25h[?25l[15;112H~@k[1;1H[15;112H   [1;1H[?25h[?25l[15;112H~@k[1;1H[15;112H   [1;1H[?25h[?25l[15;112H~@k[1;1H[15;112H   [1;1H[?25h[?25l[15;112H~@k[1;1H[15;112H   [1;1H[?25h[?25l[
