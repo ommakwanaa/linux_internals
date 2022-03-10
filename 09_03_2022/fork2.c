@@ -6,7 +6,7 @@ int main(){
     int pid1;
     printf("my process pid is %d\n",getpid());
     pid1 = fork();
-    if (pid1==0)
+    if (pid1 > 0)
     {
         sleep(2);
         printf("new child process pid is %d\n",getpid());

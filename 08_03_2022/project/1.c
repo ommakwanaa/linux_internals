@@ -11,7 +11,7 @@ int main()
 {
     int fd1, fd2, retval;
     char buffer[30];
-    fd2 = open("copy.txt",O_CREAT|O_RDWR,777);
+    fd2 = open("copy.txt",O_CREAT | O_RDWR | O_APPEND, 777);
     fd1 = open("read.txt", O_RDONLY); // to read the file
     while ((read(fd1, buffer, 30)) > 0)
     {
