@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include <unistd.h> 
 #include <pthread.h>
+
 pthread_t thread_id,thread_id2;
 void *myThreadFun(void *vargp)
 {
 	// sleep(1);
-	printf("Printing from Thread \n");
+	printf("Printing from Thread 1\n");
 	return NULL;
 }
 void *myThreadFun2(void *vargp)
@@ -25,7 +26,7 @@ int main()
     }
     else{
         printf("Thread is created\n");
-        getchar();
+        // getchar();
         // pthread_join(thread_id, NULL);
     }
     if (ret2)

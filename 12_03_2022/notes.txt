@@ -1,0 +1,70 @@
+semaphore lock
+1 >> declare 
+
+2 >> initialized || (if we dont init it will have garbage value) || sem_init(1>> &mysem,0,1) || 
+semaphore objects to be shared between threads of same objects.
+
+3 >> locking function || sem_wait(sem_t, *)
+
+4 >> unlocking function || sem_post(sem_t, *)
+
+job of a process on a semaphore
+
+semaphore token coutn = 1
+
+opeations of process 
+1. process takes token 
+2. use the resource
+3. process give it back to the semaphore
+
+binary semaphore is a type of a semaphore whose token value chages between 1 and 0 durning the operation.
+its use to protect a limited resource. 
+
+a semaphore created with more then one token count and where each token is own a resources 
+such a type of semaphore is known as counting sema phore
+
+spin lock -(where no sleeps are aloted)
+
+pthread spinlock
+
+1 >> declared pthread_spinlock_t(myvar)
+2 >> initialized it  pthread_spin_init(pthread_spinlock_t,*ptr,int share);
+3 >> locking function pthread_spin_lock(pthread_spinlock_t,*ptr);
+4 >> unlock function pthread_spin_unlock(pthread_spinlock_t,*ptr);
+
+if a system hangs in lock and unlock for a long time watchdog timers will apply areset automatically
+each and every embeded device is equiped with watchdog timers. this watchdog timers are designed to continuesly moniter the system.
+
+deadlock situation 
+In an operating system, a deadlock occurs when a process or thread enters a waiting state because a requested system resource is held by 
+another waiting process, 
+which in turn is waiting for another resource held by another waiting process.
+
+disabling an intrupt to avoid deadlock.
+
+
+interrupt service routine (ISR) 
+
+by default when a thread is created it is in joinable state and detachable state
+
+pthread join function after thread termination thre resources of respective thread are remove from the memmory that is threads 
+didnot need to wait for process termination.
+the thread which is indipendent it has to wait for main process termination bcoz resources of t4 are not removed even after termination
+from other function a thread can be dechached 
+
+
+mutex lock
+
+mutex are similar to semaforce with the usage count of one
+mutex are very simple and also effective
+who ever locks the mutex ha sto unlock the mutex
+a process or a thread can not exit while having alock it has to first unlock and then it can exit
+
+1>> declaration pthread_mutex_t(mymutex)
+2>> initialized in mutex got 2 ways (a) dynamic pthread_mutex_init(pthread_mutex_t,attr)
+                                    (b) static pthread_mutex_t(mymutex,pthread_mutex_initialization)
+
+pthread_mutex_trylock if a thread fails to aquired a loc will terminate/discard itself 
+
+3>> unlock pthread_mutex_unlock()
+

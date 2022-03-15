@@ -7,13 +7,19 @@ int main(int argc, char *argv[])
 {
     int pid1;
     printf("my process pid is %d\n", getpid());
+    
+    int ret;
+
+    
+    printf("my process pid is %d\n", getpid());
     pid1 = fork();
     if (pid1 == 0)
     {
-        // sleep(2);
+        sleep(2);
         printf("new child process pid is %d\n", getpid());
         printf("new parent process ppid is %d\n", getppid());
-        int ret = execl(argv[1], argv[2], 0);
+        ret = execl(argv[1], argv[2], NULL);
+        
     }
     else
     {
