@@ -1,0 +1,61 @@
+processor take memmory in 2 different ways 
+
+                    1 real
+
+processor looks at memmory as series of bytes where each byte is address
+
+                    2 protected
+
+processor looks at memmory as blocks of bytes 
+protected mode is a virtual address mode.
+
+*real* once the system is power on processor is in the real mode and looking memmory as series of byte executing 
+bias code and boot loader code in real mode whose address  are provided by the vendor.
+omce the boot loader scan the os and loads into the ram and kernal boot up process get starts at this stage the processor gets shifted 
+from real mode to protected mode and the process is called as processor initialization where your processor looks at memmory as 
+set of blocks / set of link kist of pages
+
+os creating illution to the processor and making processor to look memmory as set of pages 
+
+
+dynamic libabry extention is .so (shared objects)
+
+-f pic is used for creating dynapic library while pic is [position indipendent code]
+dynamic libraries should be relocatable that mean sthis library instruction must be 
+ready to get loaded in to any other memmory location (or in any process address)
+that is adress of dynamic library must be change able 
+
+-shared is used to generate dynamic libraries
+
+ldd is a linux command line tool that tells what are the shared libraries dependencies for your executable file 
+
+gdb is called as gnu debuger which is an gnu project 
+
+gdb allows to probe the source code while the cprogram is in execution and when any crash 
+happend its also allows us to get the exact reasion for the crash
+gdb is free software an command line tool that operates on executable files produces by compailation process 
+gdb is a powerfull debuging tool for c programing lanugage and also support other programing language such as c c++ python
+
+
+ -g adding debuging symbol information to executable file where symbols are varriable and the function of shared codes.
+ break point :- in order to pause your execution break points are applid from the gdb command line 
+ break point are applied using function name or line numbers.
+ for break point b is used 
+
+ next -- execute the next instruction (directly execute the function and return value)
+ step -- it will go into the function and start processing 
+
+ info locals is one more gdb command giving all local varriable values
+
+
+ while execting with gcc compailer will never check for memmory violations and its generating execulatble file 
+ malloc never generated 2 gb of nynamic memory it will return null
+
+ backtrace 
+
+ if we observed realtime application debug example most of thr time debugs are from users point of view
+ accidentally dreferncing a ponter which is uninitialize /already freedome/ and accessing memmory 
+ beyond your lower boundary region
+accessing memmory reging that is beyount your upper boundary region when a program is generated process created and memmory acllocated to the project os system allocatong a block of process address
+
+if the logical address is invalid logic adress cpu giving same invalid memory adress to kernal 
