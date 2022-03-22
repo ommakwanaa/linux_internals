@@ -1,0 +1,44 @@
+gdb fails to provide heap memmory violation 
+compiler is not checking for the memmory alocation so thats why gdb fales to memmory allocation 
+
+glibc is a standard c lib 
+glibc has 2 standard 
+1 standard calloc 
+2 standard malloc 
+
+glibc is a standard c lib and it has its on implementation of malloc() calloc() and realloc()
+problem with malloc and respective memmory alocation is that they allocate more memmory then we request for in a normal pc 
+its not at all a problem but in embeded application its generate problem / serious bug 
+
+electric-fence is not a tool is a library which is also called as memmory profile library
+it has its own implementation of malloc and callod and memmory alocation goal 
+malloc and calloc then give memmory that are request for 
+the buggy.c is for upper-boundary violation 
+
+electric-fence is configure to find out either upper boundary memmory violation or lower boundary memmory violation
+but not both at the time electric-fence is not a standard debugur 
+
+valgrind is a run time tool its use to trap down heap memmory violation and also called as memmory profiling tool
+its also a stand alone dbugger 
+
+when we use default glipc malloc() and calloc() valgrind will show why these process has failed---- valgrind ./a.out 
+
+-g is used to give symbol in gdb compiler
+
+segmentation ->efence
+memory na dakha(occhi vadhare) -> valgrind
+
+compailation error
+
+undefine syntax error and function varriable
+
+memmory padding 
+
+on a 32 bit artitecture machine the adress bus is of four bytes and when a cpu is trying to feth a character data 
+the data on the adress will notmove untill all 4 bytes are full 
+
+os will add unmeaninfful value in the adress bus and the data on adress drive and cpu remove the un meaning value and featches the required data and this process is called as memmory pading 
+
+structure padding:
+the same as memory padding is applied to structure is called structure padding.
+adds one or more empty bytes between the memory addresses to align the data in memory
