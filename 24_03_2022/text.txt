@@ -1,0 +1,6 @@
+android linix is best example of embeded linux os 
+embeded linix is compact and coustamized linix os 
+system function called will not return untill execution of shell command
+thread will have its own stack area || scheduling policy and priority || thread specific data 
+p thread atribute get stack 
+command line arguments are always on the top 

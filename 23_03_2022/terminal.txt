@@ -1,0 +1,40 @@
+om@om-VirtualBox:~/om/linux_internals/23_03_2022$ code .
+om@om-VirtualBox:~/om/linux_internals/23_03_2022$ cd 
+om@om-VirtualBox:~$ uname -r
+5.4.0-104-generic
+om@om-VirtualBox:~$ uname -a
+Linux om-VirtualBox 5.4.0-104-generic #118~18.04.1-Ubuntu SMP Thu Mar 3 13:53:15 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux
+om@om-VirtualBox:~$ cd /lib
+om@om-VirtualBox:/lib$ cd /modules
+bash: cd: /modules: No such file or directory
+om@om-VirtualBox:/lib$ cd modules
+om@om-VirtualBox:/lib/modules$ ls
+5.4.0-100-generic  5.4.0-104-generic  5.4.0-42-generic  5.4.0-96-generic  5.4.0-99-generic
+om@om-VirtualBox:/lib/modules$ cd 5.4.0.0-104-generic
+bash: cd: 5.4.0.0-104-generic: No such file or directory
+om@om-VirtualBox:/lib/modules$ cd 5.4.0-104-generic
+om@om-VirtualBox:/lib/modules/5.4.0-104-generic$ cd build
+om@om-VirtualBox:/lib/modules/5.4.0-104-generic/build$ ls
+arch   certs   Documentation  fs       init  Kbuild   kernel  Makefile  Module.symvers  samples  security  tools   usr
+block  crypto  drivers        include  ipc   Kconfig  lib     mm        net             scripts  sound     ubuntu  virt
+om@om-VirtualBox:/lib/modules/5.4.0-104-generic/build$ pwd
+/lib/modules/5.4.0-104-generic/build
+om@om-VirtualBox:/lib/modules/5.4.0-104-generic/build$ ls
+arch   certs   Documentation  fs       init  Kbuild   kernel  Makefile  Module.symvers  samples  security  tools   usr
+block  crypto  drivers        include  ipc   Kconfig  lib     mm        net             scripts  sound     ubuntu  virt
+om@om-VirtualBox:/lib/modules/5.4.0-104-generic/build$ cd arch
+om@om-VirtualBox:/lib/modules/5.4.0-104-generic/build/arch$ cd 86
+bash: cd: 86: No such file or directory
+om@om-VirtualBox:/lib/modules/5.4.0-104-generic/build/arch$ cd x86
+om@om-VirtualBox:/lib/modules/5.4.0-104-generic/build/arch/x86$ ls
+boot    events  include  Kconfig.cpu    kvm       Makefile_32.cpu  mm        pci       purgatory  tools  xen
+crypto  hyperv  Kbuild   Kconfig.debug  lib       Makefile.um      net       platform  ras        um
+entry   ia32    Kconfig  kernel         Makefile  math-emu         oprofile  power     realmode   video
+om@om-VirtualBox:/lib/modules/5.4.0-104-generic/build/arch/x86$ ls crypto
+Makefile
+om@om-VirtualBox:/lib/modules/5.4.0-104-generic/build/arch/x86$ cd ..
+om@om-VirtualBox:/lib/modules/5.4.0-104-generic/build/arch$ ls
+alpha  arm    c6x   h8300    ia64     m68k        mips   nios2     parisc   riscv  sh     um         x86
+arc    arm64  csky  hexagon  Kconfig  microblaze  nds32  openrisc  powerpc  s390   sparc  unicore32  xtensa
+om@om-VirtualBox:/lib/modules/5.4.0-104-generic/build/arch$ ^C
+om@om-VirtualBox:/lib/modules/5.4.0-104-generic/build/arch$ 

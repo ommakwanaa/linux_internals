@@ -39,6 +39,7 @@ int main()
             0x30000000;
 
     void *
+
         my_stack;
 
     pthread_attr_init(&Attr);
