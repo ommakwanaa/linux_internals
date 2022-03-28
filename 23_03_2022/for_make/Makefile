@@ -1,2 +1,2 @@
 appln:
-	gcc point2.c main.c -o appln
+	gcc main.c -o appln

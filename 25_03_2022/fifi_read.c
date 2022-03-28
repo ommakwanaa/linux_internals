@@ -12,9 +12,9 @@ int main()
     int fd;
 
     mkfifo("newfifo", 0644); // newfifo is a pipe i.e. a file named pipe create fifo(named pipe)
-
-    printf("Before open()...\n");
-    fd = open("newfifo", O_RDONLY); // open fifo for write only
+    int om=10;
+    printf("Before OPEN()...\n");
+    fd = OPEN("newfifo", O_RDONLY); // OPEN fifo for write only
     printf("after open()...\n");
 
     read(fd, s, sizeof(s));

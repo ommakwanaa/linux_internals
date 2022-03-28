@@ -1,0 +1,43 @@
+source control help us to track down child process for a period of time
+
+>>>> benifits of source/version control
+// it helps into track down files and files progress of a project period of time 
+// also allow the user to distrubute changed and modified files on a time line
+// hence again the code related issue(damege,crack, lost) you can go back in time and get the snapshot of project
+// file in a series is store in a series of snapshot 
+// helps in desinging a complex project 
+
+
+in simple terms git and git hub is drive to store all the file and work with multiple user
+
+// git and git hub works on disconnected repo system that is the advantage when work with other source control
+
+
+same as git (jeera dose)
+
+git project
+1. working directory
+2. staging
+3. respository
+
+3 types of file 
+
+1. modified file
+2. stored file
+3. file that the safe in git
+
+modified file will be part of working directory 
+all the stage file will be under a stage called staging and once trigered commit all the file are store in repo of local system
+
+git config is used to setup all git config varriable
+git config --flag gets information and store in home folder 
+
+clone 
+it is a copy of remote repo in local machine 
+
+
+creating a repo to start a project 
+enter the working directory here we will start a repo and get repo from remote 
+
+cscope is a linux utility tool use for software development oprations
+using cscope sitting at one perticular location u can brouse through entire project source file 
