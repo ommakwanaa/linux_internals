@@ -1,0 +1,68 @@
+process runs in an independent environment. 
+process have got it's address space and it's own resources. 
+in a large application there could N number of process running. 
+each process is design to handle a saperate task. 
+that times these processes needs to communicate to each other
+  
+for process communication it is never recommended a process [x] to interfier in to adress sapace of process [y]
+for that linix has provided technique call as inter process communcation 
+communication can be on a single machine or on over the network
+communication between process in single machine is callled as interprocess communication and communcation over the network is called as network communication.
+
+a network communcation required ip adress of 32bit and port numbers for 16bit where ip are used to nodes in the network
+16 bit port numbers are used for identify a process within the node 
+
+communication are of 2 types conection oriented and connection less 
+
+http program  sends request and https server responce the request like email.
+
+linix provides differnt interprocess communication technique
+
+
+inter process communication 
+pipe is a serial communication device that permits unidirectional data transfer pipe is used between 
+related process(parent and child) but not with any other process
+
+what ever is written on the right hand of the pipe the data on the same order is fetched on the read hand from the pipe
+
+
+ls |less 
+
+the movement command applied here shell is moving 2 different process 
+ls is connected to write end of the file and less is connected to read end of the file.
+
+internally a pipe is a special file which has 2 discriptors 
+1 discriptor for write end  fd[1] for wirte end 
+2 discriptor for read end fd[0] for read end
+
+major limitation of pipesystem call is the communication is possible between parent and chid process but not with unrelated processes
+
+child is inhariting the pipe file from his parent that is a copy of file discriptors copy to child process 
+
+after writing parent is calling for flush operation 
+flush means imidiatly data reflected to read end 
+
+pipe capacity is limited 
+
+case 1
+
+ a writer process write at 100bits per sec then the consumer process whic is receiving at 50bits per sec 
+after some times pipe gets full even writer has data to write but can not write data to the pipe bcoz pipe is already full 
+so that writer process geting block untill some space or room created in the file 
+
+case 2 
+
+pipe is empty but reader is atempt to read the file at that time reader will block untill data enter in the pipe 
+
+fifo are internallay a pipe but with a name 
+communication through fifo need not to be related processes the parent and child limitation is over ruled 
+mkfifo is a command to create a fifo
+
+
+type of file
+
+normal regular file , directory file, pipe(special file), charcter device file(all serial device),
+bock device file(storage device)
+
+
+$  dev / === cat /proc/devices (to see all the active device)

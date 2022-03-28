@@ -21,10 +21,12 @@ void *thread_dec(void * arg){
 int main(){
     pthread_t thread1,thread2;
     pthread_mutex_init(&my_sem,NULL);
-    pthread_create(&thread1,NULL,thread_inc,NULL);
     pthread_create(&thread2,NULL,thread_dec,NULL);
+    pthread_create(&thread1,NULL,thread_inc,NULL);
+
     pthread_join(thread1,NULL);
-    pthread_join(thread2,NULL);
+    pthread_join(thread2,NULL); 
+    
     printf(" shared var = %d",sharedvar);
     return(0);
 
