@@ -1,0 +1,17 @@
+message que is the ll of message in a kernalspace each and every message is identify by a unique identifier and called as message qid
+if mesaage que is created os kernal will return message quid for the message queque each and every message que is connected with the structure called as struct msqid_ds 
+talks about complete statistics f the respective message queque
+
+permision for message queue
+     no of message in message queque
+     max number of byte in message queque
+     message of the lass process id that has perform the write message
+     message of the lass process id that has perform the read message
+     message of the lass process id that has perform the last message send time operations.
+
+whnever a requesting resources such as shared memory message ques and sema phores from a linix os the os expects a request a key 
+of type key_t which is internally integer type this is defining some thing called as <sys/type.h>
+the os will allocate the resource with the unique id this key is agreed between both sender and receiver and this is the first step for 
+constructing a client server frame work for am application 
+
+a message queque can have multiple readers and writer 
