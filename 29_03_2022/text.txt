@@ -15,3 +15,15 @@ the os will allocate the resource with the unique id this key is agreed between 
 constructing a client server frame work for am application 
 
 a message queque can have multiple readers and writer 
+
+if no flag is used if the message que is full message send operation will get block
+if ipc no weight is queued and the codition is message que is full message send function is 
+eidrm when message qid is removoved from error occur
+
+
+
+semop() is used to change the value of semaphore
+
+for sema phore no for wich we want to change the value / by what value semop should be change 
+
+flag is help os to trace down changes done by process on a shemaphore 

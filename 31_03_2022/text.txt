@@ -1,0 +1,20 @@
+schedular are important more than cpu as it has its own algoritham 
+memmory management deaals with virtuaal management and its dealing with ram 
+
+system calls do not belong touser space they are kernal specific user function they are invoke from the user space to call apropriate kernal services each and every system call 
+passes through a thin layer between user space and kernal space called as system call interface 
+
+each and every system call has a specific defination in kernal space on this specific defination is call on a system call invocation 
+
+each and every device have its own device drivers 
+
+device driver is a piece of software that concates with the  hardware that manages the hardware and brings the functionality of the end device of the user 
+a device from os POV resides in the kernal space bcoz only in the kernal space driver has uderline priveleges to talk to comunicate with the hard ware
+application ->  device driver -> hardwatre 
+
+driver hs 2 interfaces 1 is application intraction and other is intraction with hardware 
+intraction is purely linux kernal os 
+device driver deals with hardware that is hardware based 
+
+
+

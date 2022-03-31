@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <string.h>
-#include <sys/msg.h>
-#include <sys/types.h>
 #include <sys/ipc.h>
+#include <sys/types.h>
+#include <sys/msg.h>
 
-struct msgbuff
+struct msgbuf
 {
     long mtype;
     char data[512];
@@ -12,7 +12,7 @@ struct msgbuff
 
 int main(int argc, char *argv[])
 {
-    struct msgbuff v;
+    struct msgbuf v;
     int id;
 
     if (argc != 2)
