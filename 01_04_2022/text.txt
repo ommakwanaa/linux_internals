@@ -1,0 +1,42 @@
+SIGNALS  they are software intrupts they are also notification to the processes that inform some event occurs 
+they are ashyncronus in nature that can happen any time 
+process with inuff permision can send signal to another process or else it can send signal to it self also 
+most of the time process gets signal from kernal an cpu
+
+
+APPLICATION OF SIGNALS 
+they are used for syncronizing in case of semaphore locks it also provide unlocking applications 
+difference between mutex and semaphore is semaphoresends the signal 
+
+
+we have a function and command both as kill 
+but command kill is used to kill the signal using function
+kill sends a signal to the process and also to killl the process terminating in the background
+
+writer writing into the pipe with out havaing a reader then kernal notify that there is no reader
+
+when clock set by allaram expieres a signal call seek alrm in generated 
+
+SIGURG1/SIGURG=2 ->these signals are used by the system 
+
+signals are the event that are to notified to process they can be from cpu kernal or any software running on the cpu.
+
+hardware signal-> events trigered by the external components other than cpu.
+
+on a network device a network packet arrive they will triggered the intrupt to the cpu and it runts appropriate network driver and ask to receive and process the packet
+
+when ready to transmit over the network device triger interrupt to CPU and CPU runs appropriate network driver and say to please transmit the packet
+
+insted of execting a defult function user can run user define function before that user has to installed or established a signal handler 
+it is used to notify the kernal to execute a user define function whn a signal is deliverd 
+
+when signal is sent to process any of these 3 actions can be generated:
+1)default action
+2)ignore action
+3)user-defined action
+SIGNAL HANDLER:
+Installing/establishing the user defined function:
+instead of executing a default action a user can run user defined function before that user has to establish or install the signal handler. signal handler is to notify the kernel to execute a user defined function when a signal is delivered.
+Signal handler syntax:
+void*(signal(int signal_number, void *function()))(int);Signal function takes 2 args. 1st is signal number and 2nd is function pointer that is executes a user defined function. signal function itself is a function pointer that takes single integer and returs void
+

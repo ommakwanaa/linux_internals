@@ -17,4 +17,3 @@ intraction is purely linux kernal os
 device driver deals with hardware that is hardware based 
 
 
-
