@@ -1,0 +1,71 @@
+        -:    0:Source:axay_clent.c
+        -:    0:Graph:axay_clent.gcno
+        -:    0:Data:axay_clent.gcda
+        -:    0:Runs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <sys/types.h>
+        -:    3:#include <sys/ipc.h>
+        -:    4:#include <sys/sem.h>
+        -:    5:#include <sys/shm.h>
+        -:    6:#include <string.h>
+        -:    7:
+        -:    8:#define MY_KEY 199
+        -:    9:#define SHM_SIZE 0x1000
+        -:   10:#define MSG_LEN 256
+        -:   11:#define RESP_MSG_START 256
+        -:   12:
+        1:   13:int main()
+        -:   14:{
+        -:   15:    int semId, shmId;
+        -:   16:    char *pShm; // shared memory creation call will returns the pointer to the allocated region so we created this
+        -:   17:    struct sembuf smop;
+        -:   18:
+        -:   19:    // create a semaphore set, containing two semaphores
+        1:   20:    semId = semget(MY_KEY, 1, 0660);
+        1:   21:    if (semId < 0)
+        -:   22:    {
+        1:   23:        printf("could not create semaphore\n");
+        1:   24:        return (1);
+        -:   25:    }
+        -:   26:    else
+        -:   27:    {
+    #####:   28:        printf("opened a semaphore ID is: %d\n", semId);
+        -:   29:    }
+        -:   30:
+        -:   31:    // create a shared memory segment
+    #####:   32:    shmId = shmget(MY_KEY, SHM_SIZE, 0660);
+    #####:   33:    if (shmId < 0)
+        -:   34:    {
+    #####:   35:        printf("could not create shared segment\n");
+    #####:   36:        return (2);
+        -:   37:    }
+        -:   38:
+    #####:   39:    pShm = shmat(shmId, NULL, 0);
+    #####:   40:    if (!pShm)
+        -:   41:    {
+    #####:   42:        printf("could not attach shared memory segment\n");
+    #####:   43:        return (3);
+        -:   44:    }
+        -:   45:
+        -:   46:    while (1)
+        -:   47:    {
+    #####:   48:        printf("client: enter some request message to send to the server: \n");
+    #####:   49:        fgets(pShm, MSG_LEN, stdin);
+    #####:   50:        smop.sem_num = 0;
+    #####:   51:        smop.sem_op = 1;
+    #####:   52:        smop.sem_flg = 0;
+        -:   53:
+    #####:   54:        semop(semId, &smop, 1);
+        -:   55:
+        -:   56:        // send token to semaphore 1
+    #####:   57:        smop.sem_num = 1;
+    #####:   58:        smop.sem_op = -1;
+    #####:   59:        smop.sem_flg = 0;
+        -:   60:
+    #####:   61:        semop(semId, &smop, 1);
+    #####:   62:        puts(pShm + RESP_MSG_START);
+        -:   63:    }
+        -:   64:}
+        
+        
+
